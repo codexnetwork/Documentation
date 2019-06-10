@@ -18,6 +18,7 @@ const uint32_t commission_rate, const std::string & url );
 添加、修改节点信息
 
 参数：
+
 - bpnbame : 节点账号
 - producer_key : 节点公钥
 - commission_rate : 分红比列 单位:万分之1, 范围:大于等于1，小于等于10000
@@ -32,9 +33,9 @@ void freeze( const account_name voter, const asset stake );
 将系统代币兑换为可投票的选票
 
 参数：
+
 - voter : 投票账户
 - stake : 对话投票的系统代币的数量
-
 
 ### 3. 投票
 
@@ -51,6 +52,7 @@ void vote( const account_name voter, const account_name bpname, const asset stak
 - statke : 票数（eos金额）
 
 逻辑:
+
 1. 设置用户的投票信息：
 投票数大于当前票数，增加投票；
 投票数小于当前票数，撤回投票；
@@ -63,12 +65,8 @@ void vote( const account_name voter, const account_name bpname, const asset stak
 void unfreeze( const account_name voter, const account_name bpname );
 ```
 
-    撤回投票要冻结3天(根据块数确定，每1秒一块)，3天后可执行解冻。
-
-逻辑：
-
-将撤回票数 加到可用余额中。清空撤回票数。
-
+撤回投票要冻结3天(根据块数确定，每1秒一块)，3天后可执行解冻。
+逻辑：将撤回票数 加到可用余额中。清空撤回票数。
 
 ### 5. 领取投票分红
 
@@ -82,13 +80,13 @@ void claimbp( const account_name voter, const account_name bpname );
 - bpname : 节点名
 
 逻辑:
+
 1. 计算投票账号最新票龄：上次票龄+票数*(当前块高度-上次结算时块高度)
 2. 计算节点的总票龄：上次票龄+票数*(当前块高度-节点上次结算时块高度)
 3. 计算分红数：节点奖池总数*投票者总票龄/节点总票龄
 4. 增加投票账号余额 +=分红数
 5. 投票信息票龄清零，更新结算块高度
 6. 减少节点奖池 -=分红数，总票龄减少账号票龄，更新计算块高度
-
 
 ### 6. 出块回调函数    (系统内部使用)
 
@@ -102,114 +100,154 @@ void onblock(…const account_name bpname,const uint32_t schedule_version);
 - schedule_version : 节点排行换届版本
   
 逻辑:
+
 1. 出块节点bpname，producer.amount出块数加1
 2. 每个出块奖励9个EOS，按分红比例，将奖励加入出块节点余额，并将剩余分红加入出块节点的奖池中。
 3. 每个出块将奖励1个EOS给b1账号(block.one)
 4. 每100个块(即5分钟)更新一次超级节点排行. 刷新选举的23个超级节点，遍历所有bp查前23个，调用wasm接口set_proposed_producers重置BP,修改数据库数据
 
 ### 7. 设置链紧急状态
+
 ```cpp
 void setemergency( const account_name bpname, const bool emergency );
 ```
 
 超过三分之二的节点设置紧急状态，则链将处于紧急状态。将紧急停用所有功能。
+
 参数: 
+
 - bpname : 节点
 - emergency : 紧急状态
 
 ### 8. 增加抵押
+
 ```cpp
 void addmortgage(const account_name bpname,const account_name payer,asset quantity);
 ```
 
 BP用此功能添加出块抵押,用于竞选出块BP
-参数: 
+
+参数:
+
 - bpname : 节点
 - payer :  付款账户
 - quantity : 抵押金额
- 
+
 ### 9. 解除抵押
+
 ```cpp
 void claimmortgage(const account_name bpname,const account_name receiver,asset quantity);
 ```
 
 BP用此功能添加取出出块抵押
-参数: 
+
+参数:
+
 - bpname : 节点
 - receiver :  收款账户
 - quantity : 抵押金额
- 
+
 ### 10. 领取投票分红
+
 ```cpp
 void claimvote(const account_name bpname,const account_name receiver);
 ```
 
 领取BP上面的出块分红
+
 参数: 
+
 - bpname : 节点
 - receiver :  领取账户
- 
+
 ### 11. 领取出块分红
+
 ```cpp
 void claimbp(const account_name bpname,const account_name receiver);
 ```
 
 出块BP领取出块分红
-参数: 
+
+参数:
+
 - bpname : 节点
 - receiver :  收款账户
 
 ### 12. 发起提议惩罚BP
+
 ```cpp
 void punishbp(const account_name initiator,const account_name bpname);
 ```
+
 用户发起提议惩罚漏块的BP 漏块BP记录在表格lastdrainbp上面
-参数: 
+
+参数:
+
 - initiator :  发起提议的账户
 - bpname : 节点
 
 ### 13. 撤销惩罚BP提议
+
 ```cpp
 void canclepunish(const account_name initiator,const account_name bpname); 
 ```
-用户撤销惩罚漏块的BP的提议 
-参数: 
+
+用户撤销惩罚漏块的BP的提议
+
+参数:
+
 - initiator :  发起提议的账户
 - bpname : 节点
 
 ### 13.同意惩罚BP的提议
+
 ```cpp
 void apppunish(const account_name bpname,const account_name punishbpname);
 ```
+
 出块节点同意惩罚BP的提议
-参数: 
+
+参数:
+
 - bpname : 节点
 - punishbpname :  待惩罚的BP
 
 ### 13.撤销对惩罚BP的提议的同意
+
 ```cpp
 void unapppunish(const account_name bpname,const account_name punishbpname);
 ```
+
 出块节点同意惩罚BP的提议
-参数: 
+
+参数:
+
 - bpname : 节点
 - punishbpname :  待惩罚的BP
 
 ### 14.结束惩罚
+
 ```cpp
 void bailpunish(const account_name bpname);
 ```
+
 被惩罚的节点在惩罚期过后可以使用这个功能结束对自己的惩罚
-参数: 
+
+参数:
+
 - bpname : 被惩罚的BP
 
 ### 15.增加CPU和NET的抵押
+
 ```cpp
 void delegatebw( account_name from, account_name receiver,
              asset stake_net_quantity, asset stake_cpu_quantity, bool transfer );
 ```
+
 抵押CPU和NET
-参数: 
+
+参数:
+
 - from : 付款的账户
 - receiver:接受CPU和NET的账户
 - stake_net_quantity : 增加的NET的抵押
@@ -217,27 +255,35 @@ void delegatebw( account_name from, account_name receiver,
 - transfer : 是否会把币转个receiver
 
 ### 15.减少CPU和NET的抵押
+
 ```cpp
 void undelegatebw( account_name from, account_name receiver,
                asset unstake_net_quantity, asset unstake_cpu_quantity );
 ```
+
 抵押CPU和NET
-参数: 
+
+参数:
+
 - from : 付款的账户
 - receiver:减少CPU和NET的账户
 - stake_net_quantity : 减少的NET的抵押
 - stake_cpu_quantity : 减少的CPU的抵押
 
 ### 16.取出CPU和NET赎回的部分
+
 ```cpp
 void refund( account_name owner );
 ```
+
 取出CPU和NET赎回的币
-参数: 
+
+参数:
+
 - owner : 赎回的账户
 
-
 ## abi
+
 - [System]https://github.com/codexnetwork/codex.relay/blob/develop/contracts/force.system/force.system.abi)
   
 ```json

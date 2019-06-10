@@ -9,18 +9,20 @@
 ## cleos 命令
 
 ```bash
-cleos push action codex newaccount '{"creator":"eosforce","name":"tesss","owner":{"threshold": 1,"keys": [{"key": "CDX6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV","weight": 1}],"accounts": [],"waits":[]},"active":{"threshold": 1,"keys": [{"key": "CDX6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV","weight": 1}],"accounts": [],"waits":[]}}' -p eosforce
+cleos push action codex newaccount '{"creator":"createor","name":"newacc","owner":{"threshold": 1,"keys": [{"key": "CDX6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV","weight": 1}],"accounts": [],"waits":[]},"active":{"threshold": 1,"keys": [{"key": "CDX6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV","weight": 1}],"accounts": [],"waits":[]}}' -p createor
 
 ```
 
 参数：
-  - creator TEXT                执行创建的账号 (必要)
-  - name TEXT                   创建的新账号名 (required)
-  - owner TEXT               拥有者的账号公钥 (required)
-  - active TEXT              新账号的激活公钥，默认同拥有者的账号公钥
+
+- creator TEXT                执行创建的账号 (必要)
+- name TEXT                   创建的新账号名 (required)
+- owner TEXT               拥有者的账号公钥 (required)
+- active TEXT              新账号的激活公钥，默认同拥有者的账号公钥
 
 
 ## abi 数据结构
+
 - [eosio.bio.abi](https://github.com/eosforce/eosforce/blob/release/contracts/eosio.bios/eosio.bios.abi)
   
 ```json
@@ -43,5 +45,4 @@ cleos push action codex newaccount '{"creator":"eosforce","name":"tesss","owner"
          {"name":"active",  "type":"authority"}
        ]
      }
-
 ```
