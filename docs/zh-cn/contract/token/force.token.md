@@ -1,6 +1,4 @@
-# Codex System 系统合约
-
-## 合约说明
+# Codex Token 系统合约
 
 force.token 合约是Codex链上代币发行合约
 
@@ -9,24 +7,27 @@ force.token 合约是Codex链上代币发行合约
 ### 1.1 create 创建代币
 
 创建代币符号
+
 ```cpp
  void create( account_name issuer,
               asset        maximum_supply);
 ```
 
 参数：
+
 - issuer : 发行人
 - maximum_supply :  代币及最大供应量
 
-  
 ### 1.2 issue 发行代币
 
 发行一定数量代币到指定账户
+
 ```cpp
 void issue( account_name to, asset quantity, string memo );
 ```
 
 参数:
+
 - to : 接收币的账户
 - quantity :增发的币的数量
 - memo : 备注
@@ -34,6 +35,7 @@ void issue( account_name to, asset quantity, string memo );
 ### 1.3 transfer 代币转账
 
 代币转账操作
+
 ```cpp
  void transfer( account_name from,
                 account_name to,
@@ -42,6 +44,7 @@ void issue( account_name to, asset quantity, string memo );
 ```
 
 参数:
+
 - from :转账的账户
 - to : 接收币的账户
 - quantity :转账的币
@@ -50,6 +53,7 @@ void issue( account_name to, asset quantity, string memo );
 ### 1.4 trade 代币交易
 
 用于调用其他交易合约的功能的action
+
 ```cpp
  void trade( account_name   from,
              account_name   to,
@@ -59,6 +63,7 @@ void issue( account_name to, asset quantity, string memo );
 ```
 
 参数:
+
 - from : 转账的账户
 - to : 接收币的账户,一般是其他交易合约
 - quantity : 转账的币
@@ -68,36 +73,41 @@ void issue( account_name to, asset quantity, string memo );
 ### 1.5 takecoin 取铸币
 
 将币从铸币池中取出来
+
 ```cpp
 void takecoin(account_name to);
 ```
 
 参数:
+
 - to : 取铸币的账户
 
 ### 1.6 opencast 开启铸币池
 
 在当前块高度开启铸币池
+
 ```cpp
 void opencast(account_name to);
 ```
 
 参数:
+
 - to : 开启铸币池的账户
 
 ### 1.7 closecast 关闭铸币池
 
 关闭没有铸币的铸币池
+
 ```cpp
 void closecast(account_name to,int32_t finish_block);
 ```
 
 参数:
+
 - to : 关闭铸币池的账户
 - finish_block : 要关闭的铸币池的铸币结束时间
 
-
-## ABI
+## 2. ABI
 
 - [force.token](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/force.token/force.token.abi)
 
@@ -373,6 +383,4 @@ void closecast(account_name to,int32_t finish_block);
   "ricardian_clauses": [],
   "abi_extensions": []
 }
-
-
 ```

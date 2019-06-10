@@ -1,14 +1,13 @@
-# Codex System 系统合约
-
-## 合约说明
+# Codex Relay Token 系统合约
 
 relay.token 合约是Codex映射其他链资产的代币发行合约
 
-## 1. Action
+## 1. Actions
 
 ### 1.1 create 创建代币
 
 创建代币符号
+
 ```cpp
 void create( account_name issuer,
             name chain,
@@ -18,21 +17,23 @@ void create( account_name issuer,
 ```
 
 参数：
+
 - issuer : 发行人
 - chain : 链名
 - side_account : 链上的合约名
 - side_action : 链上转账的操作名
 - maximum_supply :  代币及最大供应量
 
-  
 ### 1.2 issue 发行代币
 
 发行一定数量代币到指定账户
+
 ```cpp
 void issue( name chain, account_name to, asset quantity, string memo );
 ```
 
 参数:
+
 - chain : 链名
 - to : 接收币的账户
 - quantity :增发的币的数量
@@ -41,6 +42,7 @@ void issue( name chain, account_name to, asset quantity, string memo );
 ### 1.3 transfer 代币转账
 
 代币转账操作
+
 ```cpp
    void transfer( account_name from,
                   account_name to,
@@ -50,6 +52,7 @@ void issue( name chain, account_name to, asset quantity, string memo );
 ```
 
 参数:
+
 - from :转账的账户
 - to : 接收币的账户
 - chain : 链名
@@ -59,6 +62,7 @@ void issue( name chain, account_name to, asset quantity, string memo );
 ### 1.4 trade 代币交易
 
 用于调用其他交易合约的功能的action
+
 ```cpp
    void trade( account_name from,
                account_name to,
@@ -69,6 +73,7 @@ void issue( name chain, account_name to, asset quantity, string memo );
 ```
 
 参数:
+
 - from : 转账的账户
 - to : 接收币的账户,一般是其他交易合约
 - chain : 链名
@@ -79,11 +84,13 @@ void issue( name chain, account_name to, asset quantity, string memo );
 ### 1.5 销毁代币
 
 将代币从Codex上销毁,被销毁的代币会分发到对应的链上对应的账户
+
 ```cpp
 void destroy( name chain, account_name from, asset quantity, string memo );
 ```
 
 参数:
+
 - chain : 链名
 - from : 销毁代币的账户
 - quantity : 销毁的代币
@@ -92,19 +99,18 @@ void destroy( name chain, account_name from, asset quantity, string memo );
 ### 1.6 领取铸币分红
 
 领取分红到铸币池
+
 ```cpp
 void claim(name chain,asset quantity,account_name receiver);
 ```
 
 参数:
+
 - chain : 链名
 - quantity : 领取分红的代币 数量是无效的
 - receiver : 领取分红的账户
 
-
-
-
-## ABI
+## 2. ABI
 
 - [relay.token](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/relay.token/relay.token.abi)
 
@@ -420,11 +426,11 @@ void claim(name chain,asset quantity,account_name receiver);
             {
                "name":"total_mineage",
                "type":"int128"
-            }, 
+            },
             {
                "name":"reward_pool",
                "type":"asset"
-            }, 
+            },
             {
                "name":"reward_block_num",
                "type":"int32"
@@ -676,6 +682,4 @@ void claim(name chain,asset quantity,account_name receiver);
    ],
    "abi_extensions":[]
 }
-
-
 ```
