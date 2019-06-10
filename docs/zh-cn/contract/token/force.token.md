@@ -1,7 +1,5 @@
 # Codex Token 系统合约
 
-## 合约说明
-
 force.token 合约是Codex链上代币发行合约
 
 ## 1. Action
@@ -109,7 +107,7 @@ void closecast(account_name to,int32_t finish_block);
 - to : 关闭铸币池的账户
 - finish_block : 要关闭的铸币池的铸币结束时间
 
-## ABI
+## 2. ABI
 
 - [force.token](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/force.token/force.token.abi)
 

@@ -1,13 +1,11 @@
 # Codex bridge 交易合约
 
-## 合约说明
-
 codex.bridge 合约是Codex链上进行代币交易的合约
 codex.bridge目前只提供等比例兑换功能.
 
 + 1.等比例兑换 提供代币1 和 代币2以一种固定比例的形式进行兑换
 
-## 1. Action
+## 1. Actions
 
 ### 1.1 addmarket 创建交易对
 
@@ -196,7 +194,7 @@ void removemarket(name trade,account_name trade_maker,account_name base_recv,acc
 + base_recv：当前市场中base_coin的余额转入的账户
 + maker_recv：当前市场中market_coin的余额转入的账户
 
-## ABI
+## 2. ABI
 
 [sys.bridge](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/sys.bridge/sys.bridge.abi)
 

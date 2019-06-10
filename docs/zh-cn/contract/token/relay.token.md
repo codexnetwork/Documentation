@@ -1,10 +1,8 @@
 # Codex Relay Token 系统合约
 
-## 合约说明
-
 relay.token 合约是Codex映射其他链资产的代币发行合约
 
-## 1. Action
+## 1. Actions
 
 ### 1.1 create 创建代币
 
@@ -112,7 +110,7 @@ void claim(name chain,asset quantity,account_name receiver);
 - quantity : 领取分红的代币 数量是无效的
 - receiver : 领取分红的账户
 
-## ABI
+## 2. ABI
 
 - [relay.token](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/relay.token/relay.token.abi)
 

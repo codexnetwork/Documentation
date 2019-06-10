@@ -1,10 +1,8 @@
 # Codex match 交易合约
 
-## 合约说明
-
 codex.match 合约是Codex链上进行代币撮合交易的合约
 
-## 1. Action
+## 1. Actions
 
 ### 1.1 regex 注册交易所账户
 
@@ -112,7 +110,7 @@ void setminordqty(account_name exc_acc, uint32_t pair_id, asset min_qty);
 + id:交易对id
 + min_qty:最小交易量
 
-## ABI
+## 2. ABI
 
 [sys.match](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/sys.match/sys.match.abi)
 
