@@ -2,7 +2,7 @@
 
 ---------------------------------------
 
-https://github.com/codexnetwork/Documentation/#/
+[Doc](https://codexnetwork.github.io/Documentation/#/)
 
 [中文](README_zh_CN.md)
 
@@ -24,4 +24,4 @@ cd Documentation/docs
 docsify serve .
 ```
 
-then, visit http://127.0.0.1:3000.
+then, visit `http://127.0.0.1:3000`.
