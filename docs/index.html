@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>codex docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="codex doc wiki">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="keywords" content="codex,codex">
+  <!-- Theme: Simple Dark -->
+  <link rel="stylesheet" href="//unpkg.com/docsify-themeable/dist/css/theme-simple-dark.css">
+  <link rel="stylesheet" href="//unpkg.com/docsify-copy-code@1.0.0/styles.css">
+  <link rel="stylesheet" href="//unpkg.com/prismjs@1.15.0/themes/prism-dark.css">
+
+  <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
+</head>
+
+<body>
+  <nav>
+    <a href="#/zh-cn/">中文</a>
+    <a href="#/en-us/">EN</a>
+  </nav>
+  <div data-app id="main">Please wait...</div>
+
+  //
+  <script>
+    window.$docsify = {
+      name: 'Codex',
+      el: '#main',
+      search: {
+        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+        paths: 'auto', // or 'auto'
+
+        // 支持本地化
+        placeholder: {
+          '/': 'Type to search',
+          '/zh-cn/': '搜索',
+          '/en-us/': 'Type to search'
+        },
+
+        // 支持本地化
+        noData: {
+          '/': 'No Results',
+          '/zh-cn/': '找不到结果',
+          '/en-us/': 'No Results'
+        },
+
+        // 搜索标题的最大程级, 1 - 6
+        depth: 6
+      },
+
+      loadSidebar: true,
+      loadNavbar: true,
+      repo: 'https://github.com/codexnetwork/codex.relay',
+      coverpage: true,
+      auto2top: true,
+      autoHeader: true,
+      themeColor: '#1da1f2',
+      subMaxLevel: 2,
+
+      plugins: [
+        function (hook) {
+          hook.beforeEach(function (content) {
+            return content.replace(/\$\$([\s\S]*?)\$\$/g,
+              function (x) {
+                return x.replace(/[_]/g, '[subscript]')
+              }
+            )
+          })
+          hook.beforeEach(function (content) {
+            return content.replace(/\$([\s\S]*?)\$/g,
+              function (x) {
+                return x.replace('_', '[subscript]')
+              }
+            )
+          })
+          hook.afterEach(function (html, next) {
+            html = html.replace(/\$\$([\s\S]*?)\$\$/g,
+              function (x) {
+                return x.replace(/(\[subscript\])/g, '_')
+              }
+            )
+            html = html.replace(/\$([\s\S]*?)\$/g,
+              function (x) {
+                return x.replace(/(\[subscript\])/g, '_')
+              }
+            )
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]) // calling it twice
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]) //fixes MathJax refresh issue
+            next(html)
+          })
+        },
+        function (hook, vm) {
+          hook.ready(function () {
+            mermaid.initialize({
+              startOnLoad: false
+            });
+          });
+          hook.doneEach(function () {
+            mermaid.init(undefined, '.mermaid');
+          });
+        }
+      ],
+      markdown: {
+        renderer: {
+          code: function (code, lang) {
+            if (code.match(/^sequenceDiagram/) || code.match(/^graph/) || code.match(/^gantt/) || code.match(
+                /^classDiagram/) || code.match(/^gitGraph/)) {
+              const html = '<div class="mermaid">' + code + '</div>';
+              return html + '<pre v-pre data-lang="' + lang + '"></pre>';
+            }
+            code = code.replace(/@DOCSIFY_QM@/g, '`');
+            const hl = Prism.highlight(
+              code,
+              Prism.languages[lang] || Prism.languages.markup
+            );
+            return `<pre v-pre data-lang="${lang}"><code class="lang-${lang}">${hl}</code></pre>`;
+          }
+        }
+      }
+    }
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath: [ ['$','$'],
+    ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, "HTML-CSS": { availableFonts: ["TeX"]
+    } });
+  </script>
+  <script src="//cdn.bootcss.com/mathjax/2.6.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  <!-- docsify -->
+  <script src="//unpkg.com/docsify/lib/docsify.js" data-load-sidebar="_sidebar.md" data-router data-repo="https://github.com/codexnetwork/Documentation/tree/master/docs"></script>
+  <script src="//unpkg.com/mermaid@8.0.0-alpha.6/dist/mermaid.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script src="//unpkg.com/docsify-pagination@2.3.0/dist/docsify-pagination.min.js"></script>
+
+  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-c.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-cpp.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-go.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-csharp.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-erlang.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-groovy.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-haskell.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-http.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-python.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-rust.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-coffeescript.min.js"></script>
+
+  <script src="https://unpkg.com/docsify-copy-code@2"></script>
+  <script>
+    mermaid.initialize({
+      theme: 'dark',
+      gantt: {
+        axisFormat: '%m/%d/%Y'
+      },
+      sequence: {
+        actorMargin: 50
+      },
+    });
+  </script>
+
+</body>
+
+</html>
