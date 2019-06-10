@@ -8,7 +8,7 @@ codex.match 合约是Codex链上进行代币撮合交易的合约
 
 创建两个代币进行兑换的交易对
 
-```C++
+```cpp
 void regex(account_name exc_acc);
 ```
 
@@ -22,7 +22,7 @@ void regex(account_name exc_acc);
 
 创建一个交易对
 
-```C++
+```cpp
 void create(symbol_type base, name base_chain, symbol_type base_sym, symbol_type quote, name quote_chain, symbol_type quote_sym, account_name exc_acc);
 ```
 
@@ -40,7 +40,7 @@ void create(symbol_type base, name base_chain, symbol_type base_sym, symbol_type
 
 开放交易对,只有开放的交易对用户才能进行交易
 
-```C++
+```cpp
 void open(name base_chain, symbol_type base_sym, name quote_chain, symbol_type quote_sym, account_name exc_acc);
 ```
 
@@ -54,7 +54,7 @@ void open(name base_chain, symbol_type base_sym, name quote_chain, symbol_type q
 
 ### 1.4 freeze 冻结交易对
 
-```C++
+```cpp
 void freeze(uint32_t id);
 ```
 
@@ -64,7 +64,7 @@ void freeze(uint32_t id);
 
 ### 1.5 unfreeze 解冻交易对
 
-```C++
+```cpp
 void unfreeze(account_name exc_acc, uint32_t pair_id);
 ```
 
@@ -74,7 +74,7 @@ void unfreeze(account_name exc_acc, uint32_t pair_id);
 
 ### 1.6 close 关闭交易对
 
-```C++
+```cpp
 void close(name base_chain, symbol_type base_sym, name quote_chain, symbol_type quote_sym, account_name exc_acc);
 ```
 
@@ -88,7 +88,7 @@ void close(name base_chain, symbol_type base_sym, name quote_chain, symbol_type 
 
 ### 1.7 setfee 给交易对设置费用
 
-```C++
+```cpp
 void setfee(account_name exc_acc, uint32_t pair_id, uint32_t rate);
 ```
 
@@ -100,7 +100,7 @@ void setfee(account_name exc_acc, uint32_t pair_id, uint32_t rate);
 
 ### 1.8 setminordqty 设置最小交易量
 
-```C++
+```cpp
 void setminordqty(account_name exc_acc, uint32_t pair_id, asset min_qty);
 ```
 

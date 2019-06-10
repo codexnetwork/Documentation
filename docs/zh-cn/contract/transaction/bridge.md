@@ -11,7 +11,7 @@ codex.bridge目前只提供等比例兑换功能.
 
 创建两个代币进行兑换的交易对
 
-```C++
+```cpp
 void addmarket(name trade,account_name trade_maker,trade_type type,name base_chain,asset base_amount,uint64_t base_weight,name market_chain,asset market_amount,uint64_t market_weight);
 ```
 
@@ -31,7 +31,7 @@ void addmarket(name trade,account_name trade_maker,trade_type type,name base_cha
 
 增加抵押就是往交易对上充值,以便其他用户可以直接进行交易
 
-```C++
+```cpp
 void addmortgage(name trade,account_name trade_maker,account_name recharge_account,name coin_chain，asset recharge_amount,coin_type type);
 ```
 
@@ -55,7 +55,7 @@ cleos push action relay.token trade '["eosforce","sys.bridge","side","10000.0000
 
 赎回抵押就是把交易对上的代币转移到交易对创建者的账户上面
 
-```C++
+```cpp
 void claimmortgage(name trade,account_name market_maker,account_name recv_account,asset claim_amount,coin_type type);
 ```
 
@@ -71,7 +71,7 @@ void claimmortgage(name trade,account_name market_maker,account_name recv_accoun
 
 用户通过这个功能在交易对上兑换代币
 
-```C++
+```cpp
 void exchange(name trade,account_name trade_maker,account_name account_covert,account_name account_recv,name coin_chain,asset amount,coin_type type);
 ```
 
@@ -95,7 +95,7 @@ cleos push action relay.token trade '["eosforce","sys.bridge","eosforce", "100.0
 
 将交易对冻结,被冻结的交易对,用户不能进行exchange操作
 
-```C++
+```cpp
 void frozenmarket(name trade,account_name trade_maker);
 ```
 
@@ -108,7 +108,7 @@ void frozenmarket(name trade,account_name trade_maker);
 
 解冻交易对,解冻后用户就能进行exchange操作了
 
-```C++
+```cpp
 void trawmarket(name trade,account_name trade_maker);
 ```
 
@@ -121,7 +121,7 @@ void trawmarket(name trade,account_name trade_maker);
 
 交易对的创建者使用,可以给交易对设置一个固定的费用
 
-```C++
+```cpp
 void setfixedfee(name trade,account_name trade_maker,asset base,asset market);
 ```
 
@@ -136,7 +136,7 @@ void setfixedfee(name trade,account_name trade_maker,asset base,asset market);
 
 交易对的创建者使用,可以给交易对设置一个固定比例的费用,根据用户的交易量来收取费用
 
-```C++
+```cpp
 void setprofee(name trade,account_name trade_maker,uint64_t base_ratio,uint64_t market_ratio);
 ```
 
@@ -151,7 +151,7 @@ void setprofee(name trade,account_name trade_maker,uint64_t base_ratio,uint64_t 
 
 交易对的创建者使用,可以给交易对设置一个固定比例的费用和最低的费用,如果用户的交易量大则根据固定比例收费,如果交易量小则收取最低费用
 
-```C++
+```cpp
 void setprominfee(name trade,account_name trade_maker,uint64_t base_ratio,uint64_t market_ratio,asset base,asset market);
 ```
 
@@ -168,7 +168,7 @@ void setprominfee(name trade,account_name trade_maker,uint64_t base_ratio,uint64
 
 交易对的创建者使用,设置两个币种的兑换比例
 
-```C++
+```cpp
 void setweight(name trade,account_name trade_maker,uint64_t base_weight,uint64_t market_weight);
 ```
 
@@ -183,7 +183,7 @@ void setweight(name trade,account_name trade_maker,uint64_t base_weight,uint64_t
 
 交易对的创建者使用,将交易对移除,将交易对上面的币取出来
 
-```C++
+```cpp
 void removemarket(name trade,account_name trade_maker,account_name base_recv,account_name maker_recv);
 ```
 
