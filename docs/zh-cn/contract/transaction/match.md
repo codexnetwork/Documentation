@@ -4,32 +4,36 @@
 
 codex.match 合约是Codex链上进行代币撮合交易的合约
 
-
 ## 1. Action
 
 ### 1.1 regex 注册交易所账户
 
 创建两个代币进行兑换的交易对
+
 ```C++
 void regex(account_name exc_acc);
 ```
 
 参数：
+
 + exc_acc:    交易所账户
-**注意: 注册交易所账户必须冻结1000个CDX, 只有交易所账户才能创建交易对**
+
+!> 注意: 注册交易所账户必须冻结1000个CDX, 只有交易所账户才能创建交易对
   
 ### 1.2 create 创建交易对
+
 创建一个交易对
 
 ```C++
-void create(symbol_type base, name base_chain, symbol_type base_sym, symbol_type quote, name quote_chain, symbol_type quote_sym, account_name exc_acc);    
+void create(symbol_type base, name base_chain, symbol_type base_sym, symbol_type quote, name quote_chain, symbol_type quote_sym, account_name exc_acc);
 ```
 
 参数:
+
 + base:       base币的名称和精度.比如:4,BTC
 + base_chain: base币所在的链名
 + base_sym:   base币种
-+ quote:	  quote币的名称和精度.比如:2,USDT
++ quote:  quote币的名称和精度.比如:2,USDT
 + quote_chain:quote币所在的链名
 + quote_sym:  quote币种
 + exc_acc:    交易所账户
@@ -37,12 +41,14 @@ void create(symbol_type base, name base_chain, symbol_type base_sym, symbol_type
 ### 1.3 open 打开交易对
 
 开放交易对,只有开放的交易对用户才能进行交易
+
 ```C++
 void open(name base_chain, symbol_type base_sym, name quote_chain, symbol_type quote_sym, account_name exc_acc);
 ```
 
 参数:
-+ base_chain: base币所在的链名 
+
++ base_chain: base币所在的链名
 + base_sym:   base币种
 + quote_chain:quote币所在的链名
 + quote_sym:  quote币种
@@ -50,11 +56,12 @@ void open(name base_chain, symbol_type base_sym, name quote_chain, symbol_type q
 
 ### 1.4 freeze 冻结交易对
 
-
 ```C++
 void freeze(uint32_t id);
 ```
+
 参数:
+
 + id:交易对id
 
 ### 1.5 unfreeze 解冻交易对
@@ -64,6 +71,7 @@ void unfreeze(account_name exc_acc, uint32_t pair_id);
 ```
 
 参数:
+
 + id:交易对名称
 
 ### 1.6 close 关闭交易对
@@ -73,7 +81,8 @@ void close(name base_chain, symbol_type base_sym, name quote_chain, symbol_type 
 ```
 
 参数:
-+ base_chain: base币所在的链名 
+
++ base_chain: base币所在的链名
 + base_sym:   base币种
 + quote_chain:quote币所在的链名
 + quote_sym:  quote币种
@@ -86,6 +95,7 @@ void setfee(account_name exc_acc, uint32_t pair_id, uint32_t rate);
 ```
 
 参数:
+
 + exc_acc:    交易所账户
 + id:交易对id
 + rate:交易对的收费比例 基数是10000
@@ -94,25 +104,17 @@ void setfee(account_name exc_acc, uint32_t pair_id, uint32_t rate);
 
 ```C++
 void setminordqty(account_name exc_acc, uint32_t pair_id, asset min_qty);
-
 ```
 
 参数:
+
 + exc_acc:    交易所账户
 + id:交易对id
 + min_qty:最小交易量
 
-
-
-
-
-
-
-
-
 ## ABI
 
-- [sys.match](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/sys.match/sys.match.abi)
+[sys.match](https://github.com/codexnetwork/codex.relay/blob/develop/contracts/sys.match/sys.match.abi)
 
 ```json
 {
@@ -510,7 +512,4 @@ void setminordqty(account_name exc_acc, uint32_t pair_id, asset min_qty);
   "ricardian_clauses": [],
   "abi_extensions": []
 }
-
-
-
 ```
