@@ -55,13 +55,12 @@ void open(name base_chain, symbol_type base_sym, name quote_chain, symbol_type q
 ### 1.4 freeze 冻结交易对
 
 ```cpp
-void freeze(account_name exc_acc, uint32_t id);
+void freeze(uint32_t id);
 ```
 
 参数:
 
-+ exc_acc:  交易所账户
-+ id:       交易对id
++ id:交易对id
 
 ### 1.5 unfreeze 解冻交易对
 
@@ -71,10 +70,9 @@ void unfreeze(account_name exc_acc, uint32_t pair_id);
 
 参数:
 
-+ exc_acc:  交易所账户
 + id:交易对名称
 
-### 1.6 close 下架交易对
+### 1.6 close 关闭交易对
 
 ```cpp
 void close(name base_chain, symbol_type base_sym, name quote_chain, symbol_type quote_sym, account_name exc_acc);
