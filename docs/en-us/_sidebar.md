@@ -1,5 +1,3 @@
-# Codex Network
-
 - [Main Page](README.md)
 - Introduction
   - [CODEX Technical Architecture](en-us/codex-tech-doc.md)
