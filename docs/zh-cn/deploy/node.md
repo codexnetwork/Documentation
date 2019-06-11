@@ -6,8 +6,8 @@ codex 中继链接点部署，部署环境最低配置：64位 ubuntu 16.04版�
 
 ####部署步骤
 ```
-    git clone https://github.com/codexnetwork/codex.io.git
-    cd codex.io && git checkout master && git pull origin relay
+    git clone https://github.com/codexnetwork/codex.relay.git
+    cd codex.relay && git checkout -b develop && git pull origin develop
     git submodule update --init --recursive
     ./eosio_build.sh
     
