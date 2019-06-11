@@ -18,3 +18,5 @@
   - [文档搭建介绍](example/doc_introduction.md)
   - [Markdown语法示例](example/example.md)
   - [数学公式示例](example/example_maths.md)
+- CODEX节点部署
+  - [部署](zh-cn/deploy/node.md)
