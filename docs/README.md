@@ -19,5 +19,5 @@
   - [Markdown语法示例](example/example.md)
   - [数学公式示例](example/example_maths.md)
 - CODEX节点部署
-  - [申请测试币](deploy/getcoin.md)
-  - [部署](deploy/node.md)
+  - [申请测试币](zh-cn/deploy/getcoin.md)
+  - [部署](zh-cn/deploy/node.md)

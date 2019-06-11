@@ -14,10 +14,10 @@
   - [内存获取](zh-cn/contract/System/ram.md)
   - [CPU&NET获取](zh-cn/contract/System/cpu&net.md)
   - [BP操作](zh-cn/contract/System/producer.md)
+- CODEX节点部署
+  - [申请测试币](zh-cn/deploy/getcoin.md)
+  - [部署](zh-cn/deploy/node.md)
 - 关于文档的文档
   - [文档搭建介绍](example/doc_introduction.md)
   - [Markdown语法示例](example/example.md)
   - [数学公式示例](example/example_maths.md)
-- CODEX节点部署
-  - [申请测试币](deploy/getcoin.md)
-  - [部署](deploy/node.md)
