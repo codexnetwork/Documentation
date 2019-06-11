@@ -1,23 +1,23 @@
 # Codex Network
 
-- [首页](README.md)
-- 介绍
-  - [CODEX技术架构](zh-cn/codex-tech-doc.md)
-  - [CODEX经济模型](zh-cn/codex-modelv1.md)
-- 功能介绍
-  - [系统合约](zh-cn/contract/System/System.md)
-  - [系统代币](zh-cn/contract/token/force.token.md)
-  - [中继代币](zh-cn/contract/token/relay.token.md)
-  - [兑换合约](zh-cn/contract/transaction/bridge.md)
-  - [交易合约](zh-cn/contract/transaction/match.md)
-  - [创建账号](zh-cn/contract/System/newaccount.md)
-  - [内存获取](zh-cn/contract/System/ram.md)
-  - [CPU&NET获取](zh-cn/contract/System/cpu&net.md)
-  - [BP操作](zh-cn/contract/System/producer.md)
+- [Main Page](README.md)
+- Introduction
+  - [CODEX Technical Architecture](en-us/codex-tech-doc.md)
+  - [CODEX Economic Model](en-us/codex-modelv1.md)
+- Features
+  - [System Contract](en-us/contract/System/System.md)
+  - [System Token](en-us/contract/token/force.token.md)
+  - [Relay token](en-us/contract/token/relay.token.md)
+  - [Exchange Contract](en-us/contract/transaction/bridge.md)
+  - [Transaction Contract](en-us/contract/transaction/match.md)
+  - [New Account](en-us/contract/System/newaccount.md)
+  - [Get Memory](en-us/contract/System/ram.md)
+  - [Get CPU&NET](en-us/contract/System/cpu&net.md)
+  - [BP operation](en-us/contract/System/producer.md)
 - Trunk
-  - [Trunk介绍](zh-cn/trunk/intro-trunk.md)
-  - [Trunk Node配置说明](zh-cn/trunk/config-trunk.md)
-- 关于文档的文档
-  - [文档搭建介绍](example/doc_introduction.md)
-  - [Markdown语法示例](example/example.md)
-  - [数学公式示例](example/example_maths.md)
+  - [Trunk introduction](en-us/trunk/intro-trunk.md)
+  - [Trunk Node Configuration](en-us/trunk/config-trunk.md)
+- Documentation about the documentation
+  - [Document Building Introduction](example/doc_introduction.md)
+  - [Markdown syntax example](example/example.md)
+  - [Mathematical Formula Example](example/example_maths.md)
