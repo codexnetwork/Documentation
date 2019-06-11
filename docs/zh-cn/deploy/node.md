@@ -51,7 +51,7 @@ signature-provider = CDX7R82SaGaJubv23GwXHyKT4qDCVXi66qkQrnjwmBUvdA4dyzEPG=KEY:5
 	nohup ./build/bin/nodeos --config-dir ~/eosforce/config 2>&1 &
 ```
 	
-####注册成为BP节点
+####注册成为BP节点(同步节点无需执行)
 ```
 	./build/bin/cleos  push action codex updatebp '{"bpname":"bpname","block_signing_key":"CDX7R82SaGaJubv23GwXHyKT4qDCVXi66qkQrnjwmBUvdA4dyzEPG","commission_rate":"100","url":"https://eosforce.io"}' -p bpname
 ```
