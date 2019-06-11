@@ -1,5 +1,3 @@
-# Codex Network
-
 - [首页](README.md)
 - 介绍
   - [CODEX技术架构](zh-cn/codex-tech-doc.md)
