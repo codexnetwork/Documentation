@@ -1,10 +1,10 @@
-#中继链relay节点部署
+# 中继链relay节点部署
 
-###CODEX节点搭建
+### CODEX节点搭建
 
 codex 中继链接点部署，部署环境最低配置：64位 ubuntu 16.04版本以上系统，4核8G内存，100G 硬盘
 
-####部署步骤
+#### 部署步骤
 ```
     git clone https://github.com/codexnetwork/codex.relay.git
     cd codex.relay && git checkout -b develop && git pull origin develop
@@ -34,7 +34,7 @@ codex 中继链接点部署，部署环境最低配置：64位 ubuntu 16.04版�
     wget https://updatewallet.oss-cn-hangzhou.aliyuncs.com/codex/activeacc.json && mv activeacc.json  ~/eosforce/config/
 ```
 
-####config配置文件
+#### config配置文件
 
 p2p地址列表：
 
@@ -46,12 +46,12 @@ producer-name = bpname
 
 signature-provider = CDX7R82SaGaJubv23GwXHyKT4qDCVXi66qkQrnjwmBUvdA4dyzEPG=KEY:5JfjatHRwbmY8SfptFRxHnYUctfnuaxANTGDYUtkfrrBDgkh3hB
 
-#####启动服务
+##### 启动服务
 ```
 	nohup ./build/bin/nodeos --config-dir ~/eosforce/config 2>&1 &
 ```
 	
-####注册成为BP节点(同步节点无需执行)
+#### 注册成为BP节点(同步节点无需执行)
 ```
 	./build/bin/cleos  push action codex updatebp '{"bpname":"bpname","block_signing_key":"CDX7R82SaGaJubv23GwXHyKT4qDCVXi66qkQrnjwmBUvdA4dyzEPG","commission_rate":"100","url":"https://eosforce.io"}' -p bpname
 ```
