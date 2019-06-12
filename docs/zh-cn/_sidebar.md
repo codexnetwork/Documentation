@@ -12,6 +12,9 @@
   - [内存获取](zh-cn/contract/System/ram.md)
   - [CPU&NET获取](zh-cn/contract/System/cpu&net.md)
   - [BP操作](zh-cn/contract/System/producer.md)
+- Trunk
+  - [Trunk介绍](zh-cn/trunk/intro-trunk.md)
+  - [Trunk Node配置说明](zh-cn/trunk/config-trunk.md)
 - 关于文档的文档
   - [文档搭建介绍](example/doc_introduction.md)
   - [Markdown语法示例](example/example.md)

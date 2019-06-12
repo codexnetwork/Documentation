@@ -17,6 +17,9 @@
 - CODEX节点部署
   - [申请测试币](zh-cn/deploy/getcoin.md)
   - [部署](zh-cn/deploy/node.md)
+- Trunk
+  - [Trunk介绍](zh-cn/trunk/intro-trunk.md)
+  - [Trunk Node配置说明](zh-cn/trunk/config-trunk.md)
 - 关于文档的文档
   - [文档搭建介绍](example/doc_introduction.md)
   - [Markdown语法示例](example/example.md)
