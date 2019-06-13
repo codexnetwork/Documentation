@@ -1,160 +1,158 @@
-# CODEX经济模型草案 Beta 1.0
+# CODEX Economic Model Draft Beta 1.0
 
-## 1. 前言
+## 1. Foreword
 
-CODEX引入了一种可持续发展的异构跨链架构，这是通过创建一个基于公有链所提供的跨链服务来实现的。该架构提供了高性能的异构跨链中继方案以及便捷的平行链开发工具，最终形式是一个去中心化多链生态平台。
-CODEX会持续接入BTC/ETH等异构链，EOSIO同构链以及FORCEIO平行链，形成一个完全去中心化的多链跨链的体系。
+CODEX introduces a sustainable heterogeneous cross-chain architecture by creating a cross-chain service based on public chains. The architecture provides high-performance heterogeneous cross-chain relay solutions and convenient development tools for parallel chains. The final form is a decentralized multi-chain ecological platform.
+CODEX will continuously connect to heterogeneous chains such as BTC/ETH, isomorphic chains such EOSIO and parallel chains such as FORCEIO, forming a completely decentralized multi-chain cross-chain system.
 
-经济模型是公有链可持续发展的核心，传统的POS代币分发模式大部分采用了ICO方式，即90%左右的代币通过ICO售卖，主网启动后再开始通过低通胀奖励节点，代币分发极度中心化导致系统迅速收敛为中心化组织。而开发团队在主网启动之前就拿到了足够的钱和代币，导致开发团队的积极性不足，一般在主网上线后很难随着用户的需求持续升级。POS与POW有一个很大的区别，POW代币持有者相当于获得了系统的分红权，系统的决策权归持续为系统贡献的矿工和开发者所有，而POS的持币者相当于同时获得了系统的分红权和决策权，因此POS共识下如何公平地持续激励系统贡献者变得更为重要。
+The economic model is the core of the sustainable development of the public chains. Most of the traditional POS token distribution models adopt ICO, that is, about 90% of the tokens are sold through ICO. After the mainnet launches, the nodes can be rewarded with low inflation. The extreme centralization of token distribution leads to a rapid convergence of the system into a centralized organization. The development team got enough money and tokens before the mainnet launched, which led to the lack of enthusiasm of the development team. And it is difficult to upgrade continuously with users' requirements after the mainnet launched. There is a big difference between POS and POW. The holder of POW token is equivalent to obtaining the system's dividend rights. And the decision-making right of the system belongs to the miners and developers who continue to contribute to the system, while the holder of POS token is equivalent to obtaining the system's dividend rights and decision-making rights at the same time. Therefore, how to motivate system contributors fairly and continuously becomes more important under the POS consensus.
 
-CODEX中继链将采用100%挖矿发行，开发团队无预留，无固定区块奖励。CODEX通过持续通胀发行的方式来向全网分发代币，在此基础上，任何一个时间点参与到社区中去均不会影响公平。随着CODEX连接更多的公有链协议，更多异构链的用户可以自由参与CODEX的治理并且公平地获取CODEX的系统代币。开发团队同时在设计去中心化预算系统，公投系统和提案系统，以保证系统的去中心化和可持续发展。
+CODEX relay chain will be issued with 100% mining, and the development team has no reservation and no fixed block rewards. CODEX distributes tokens to the entire network through a continuous inflation issuance. On this basis, participation in the community at any point in time will not affect fairness. As CODEX connects to more public chain protocols, more heterogeneous chain users can freely participate in CODEX governance and fairly obtain CODEX's system tokens. The development team is also designing a decentralized budget system, a referendum system and a proposal system to ensure that the system is decentralized and sustainable.
 
-开发团队搭建了Codex跨链测试网，设计了全新的CODEX经济模型草案Beta1.0，希望与社区一起探索更加可持续发展的区块链。
+The development team built the Codex cross-chain testnet and designed a new Codex economic model draft Beta1.0, hoping to work with the community to explore a more sustainable blockchain.
 
-## 2. 代币发行
+## 2. Token issuing
 
-概念:
+Concept:
 
-- CDX ：CODEX系统代币符号
-- 周期 : CODEX每1秒生产一个区块，每个BP每次会连续生产3个区块,21个BP轮流生产63个区块为一个轮次,CODEX的一个周期是5个轮次,在不漏块的情况下生产315个区块.如果出现换届情况则自动结束当前周期
+- CDX: CODEX system token
+- Cycle: CODEX will generate one block every 1 second, each BP will generate 3 blocks in succession each time. 21 BPs will generate 63 blocks in turn for one round. One cycle of CODEX is 5 rounds. 315 blocks are generated without missing blocks. If there is a change of term, the current cycle will automatically end.
 
-### 2.1 通胀发行
+### 2.1 Inflation
 
-每1秒生产1个区块,每个周期产生630个CDX，创世区块奖励为每个区块2个CDX，每275个周期后区块产出会增加至前一个周期区块产出的1.001倍.
+One block will be generated every 1 second, and 630 CDXs will be generated per cycle. The genesis block rewards are 2 CDXs per block. After every 275 cycles, the total number of blocks produced will increase by 1.001 times that of the previous cycle.
 
-### 2.2 完全公平的挖矿方式：
+### 2.2 Fully fair mining method
 
-#### 持有非系统代币抵押获取算力凭证
+#### Holding non-system tokens to obtain the proof of computing power by mortgage
 
-持有非系统代币（早期EOS，EOSC，ENU，Telos等EOSIO系代币，后期同样会支持BTC和ETH等异构链的代币）抵押至该链指定合约账户即可参与挖矿，对应链的账户权限由CODEX超级节点多签控制，抵押的代币可以随时撤回。非系统代币抵押后会按照市价（链上对CODEX兑换比例）乘以0.05获取CODEX作为算力凭证。
+Holding non-system tokens (early support EOS, EOSC, ENU, Telos and other EOSIO tokens, and later will support BTC，ETH and other heterogeneous chain tokens) and mortgaging to the designated contract account of the chain can participate in mining, the account permissions of the corresponding chain are controlled by multi-sign of CODEX block producers. The mortgaged tokens can be withdrawn at any time.
+After the non-system token is mortgaged, the CODEX will be obtained as proof of computing power according to the market price (the CODEX exchange ratio on the chain) multiplied by 0.05.
 
-#### 使用系统代币CDX参与投票获取算力凭证
+#### Use system token CDX to participate in voting to obtain the computing power
 
-使用系统代币CDX参与投票挖矿选举同样可获取挖矿算力。需要用户将系统代币进入抵押状态才能开始投票，抵押状态的代币可以随时切换投票节点.如果节点因为漏块而被2/3的出块BP多签惩罚,在惩罚期间该节点上的投票无法获取分红.
+Mining power can also be obtained by participating in the voting mining elections using the system token CDX. Users can start voting by mortgaging the system tokens, and the tokens in the state of mortgage can switch voting nodes at any time. If a node is punished by 2/3 multi-sign of the block-generating BPs because of missing blocks, the voting on the node cannot get dividends during the penalty period.
 
-每275个周期系统会按照整个链上挖矿算力值权重进行挖矿奖励分配，每个用户得到的挖矿奖励数量=用户算力值/总算力值，
+Every 275 cycles, the system will allocate mining rewards according to the weight of mining computing power on the whole chain. The number of mining rewards obtained by each user = user computing power value / total computing power value.
 
-具体公式如下:
+The specific formula is as follows:
 
-这里设:
+Suppose:
 
-区块$k$的激励为$R_k$, 一个从$k$区块开始结算周期$C_k=[Block_k,Block_{k+172800})$,
+The incentive for block $k$ is $R_k$, and the settlement period $C_k=[Block_k,Block_{k+172800})$ starting from the block $k$.
 
-记:
+Let:
 
-- 用户集 $U=[U_1,U_2, ... , U_n]$
-- 通证 $T=[T_1,T_2, ... , T_n]$
-- 抵押通证价值 $ST=[ST_1,ST_2, ... , ST_k]$
-- 投票通证价值 $VT=[VT_1,VT_2, ... , VT_k]$
+- User sets $U=[U_1,U_2, ... , U_n]$
+- Token $T=[T_1,T_2, ... , T_n]$
+- Mortgage Token Value $ST=[ST_1,ST_2, ... , ST_k]$
+- Voting Token Value $VT=[VT_1,VT_2, ... , VT_k]$
 
-在$C_j$周期内, 设 :
+In the $C_j$ period, suppose:
+Each Token has an average price of $P=[P_1,P_2..., P_k]$ during the $C_j$ period
+User $\mathbf{u}$ mortgage $T_k$ Token’s value is ${ST}_k^u={ST}_kP_k$, mortgage block height interval is ${SN}_k^{\mathbf{u}}$,
+User $\mathbf{u}$ vote $T_k$ Token’s value is ${VT}_k^u={VT}_kP_k$, voting block height interval is ${VN}_k^{\mathbf{u}}$,
 
-各个Token在$C_j$周期内均价 $P=[P_1,P_2, ... , P_k]$
+For users' mortgage and voting behaviors within the same period, the system should allocate incentives based on value and behavior duration.
 
-用户$\mathbf{u}$抵押$T_k$ Token的价值为${ST}_k^u={ST}_kP_k$,抵押区块高度间隔为${SN}_k^{\mathbf{u}}$,
+Then for user $\mathbf{u}$ in $C_j$ period, the mortgage reward is:
+$$StakeReward_{\mathbf{u},C_j} = ∑_{k∈C_j}R_k × \frac {∑_{i∈T}{ST}_i^\mathbf{u} {SN}_i^\mathbf{ u}} { ∑_{j∈U}∑_{i∈S}{ST}_i^j{SN}_i^j + ∑_{j∈U}∑_{i∈S}{VT}_i^ j{VN}_i^j }$$
 
-用户$\mathbf{u}$投票$T_k$ Token的价值为${VT}_k^u={VT}_kP_k$,投票区块高度间隔为${VN}_k^{\mathbf{u}}$,,
+The voting rewards are:
+$$VoteReward_{\mathbf{u},C_j} = ∑_{k∈C_j}R_k × \frac {∑_{i∈T}{VT}_i^\mathbf{u} {VN}_i^\mathbf{ u}} { ∑_{j∈U}∑_{i∈S}{ST}_i^j{SN}_i^j + ∑_{j∈U}∑_{i∈S}{VT}_i^ j{VN}_i^j }$$
 
-对于用户在同一个周期之内的抵押与投票行为,系统应当基于价值和行为持续时间来进行分配激励,
-
-则对于用户$\mathbf{u}$在$C_j$周期, 其抵押奖励为:
-
-$$StakeReward_{\mathbf{u},C_j} = ∑_{k∈C_j}R_k × \frac {∑_{i∈T}{ST}_i^\mathbf{u} {SN}_i^\mathbf{u}} { ∑_{j∈U}∑_{i∈S}{ST}_i^j{SN}_i^j + ∑_{j∈U}∑_{i∈S}{VT}_i^j{VN}_i^j }$$
-
-其投票奖励为:
-
-$$VoteReward_{\mathbf{u},C_j} = ∑_{k∈C_j}R_k × \frac {∑_{i∈T}{VT}_i^\mathbf{u} {VN}_i^\mathbf{u}} { ∑_{j∈U}∑_{i∈S}{ST}_i^j{SN}_i^j + ∑_{j∈U}∑_{i∈S}{VT}_i^j{VN}_i^j }$$
-
-易得:
-
+Therefore:
 $$∑_{k∈C_j}R_k = ∑_{j∈U}(StakeReward_{\mathbf{u},C_j} + VoteReward_{\mathbf{u},C_j})$$
 
-在实现中,系统依据Token的种类分配总体激励, 设Token $T_m$ 在区块$k$中的激励为 $R_k^{T_m}$
+In the implementation, the system assigns the overall incentive according to the type of Token, and set the incentive of Token $T_m$ in the block $k$ as $R_k^{T_m}$
 
-考虑到系统应当基于价值进行激励分配, 则有:
-
+Considering that the system should make incentive allocation based on value, it should be:
 $$∑_{k∈C_j}{SR}_k^{T_m} = ∑_{k∈C_j}R_k × \frac {∑_{\mathscr{u}∈U} {∑_{}{ST}_m^\mathscr{u} {SN}_m^\mathscr{u}} } { ∑_{j∈U}∑_{i∈S}{ST}_i^j{SN}_i^j + ∑_{j∈U}∑_{i∈S}{VT}_i^j{VN}_i^j }$$
 
 $$∑_{k∈C_j}{VR}_k^{T_m} = ∑_{k∈C_j}R_k × \frac {∑_{\mathscr{u}∈U} {∑_{}{VT}_m^\mathscr{u} {VN}_m^\mathscr{u}} } { ∑_{j∈U}∑_{i∈S}{ST}_i^j{SN}_i^j + ∑_{j∈U}∑_{i∈S}{VT}_i^j{VN}_i^j }$$
 
-易得:
+Hence:
+$$∑{k∈C_j}R_k = ∑{T_m∈T}∑{k∈C_j}{SR}k^{T_m} + ∑{T_m∈T}∑{k∈C_j}{VR}_k^{T_m}$$
 
-$$∑_{k∈C_j}R_k = ∑_{T_m∈T}∑_{k∈C_j}{SR}_k^{T_m} + ∑_{T_m∈T}∑_{k∈C_j}{VR}_k^{T_m}$$
-
-那么对于用户$\mathbf{u}$, 易得:
-
+So for user $\mathbf{u}$, we conclude that:
 $$StakeReward_{\mathbf{u},C_j} = ∑_{T_m∈T}∑_{k∈C_j}{SR}_k^{T_m} \frac {{ST}_m^\mathbf{u}{SN}_m^\mathbf{u}} { ∑_{\mathscr{u}∈U} ∑_{}{ST}_m^\mathscr{u} {SN}_m^\mathscr{u} }$$
 
 $$VoteReward_{\mathbf{u},C_j} = ∑_{T_m∈T}∑_{k∈C_j}{VR}_k^{T_m} \frac {{VT}_m^\mathbf{u}{VN}_m^\mathbf{u}} { ∑_{\mathscr{u}∈U} ∑_{}{VT}_m^\mathscr{u} {VN}_m^\mathscr{u} }$$
 
-### 2.3 铸币周期
+### 2.3 Mintage cycle
 
-为了使得代币的发行更加公平，我们设计了铸币周期。铸币周期意即新发行代币解锁所需的周期。铸币周期在慢速启动期为每2592000个区块一个周期,铸币周期在链前期有一个衰减过程,衰减的逻辑是每生产2.5个区块铸币周期衰减1个区块,最后会稳定在每604800个区块一个周期。处于铸币过程的代币不能用于转账，投票。
+To make the issue of tokens fairer, we designed the mintage cycle. The mintage cycle is the period required to unlock the newly issued tokens. The mintage cycle is one cycle per 2592000 blocks in the slow launch period, and it has an attenuation process in the early stage of the chain. The logic of attenuation is that the mintage cycle decays one block per 2.5 blocks produced, and finally stabilizes at one cycle per 604800 blocks. Tokens in the mintage process cannot be used for transfer or voting.
 
-### 2.4 慢速启动过程
+### 2.4 Slow launch process
 
-为了在早期的代币分配期间，矿工能得到更加公平的待遇，主网启动后的前60天为慢速启动期。
+In order to allow miners to get a fairer treatment in the early token distribution period, the first 60 days after the mainnet ’s launch was the slow start period.
 
-慢启动期间分红参数:
+Dividend parameters during the slow launch period:
 
-- 初始周期分红:143
-- 每275个周期分红递增参数:1.025
+- Dividend of initial period: 143
+- Dividend increase parameter of every 275 cycles :1.025
 
-慢速启动期之后分红参数:
+Dividend parameters after the slow launch period:
 
-- 初始周期分红:630
-- 每275个周期分红递增参数:1.001
+- Dividend of initial period: 630
+- Dividend increase parameter of every 275 cycles: 1.001
 
-## 3. 节点
+## 3. Nodes
 
-节点分为出块节点和收益节点两种，出块节点由得票数最高的前21个节点组成，第22名开始为收益节点，得票数大于CDX总抵押量的0.5%即可成为收益节点。用户把代币投票给出块节点和收益节点均可以获得分红。
+The nodes are divided into two types: block-generating nodes and profit nodes. The block-generating nodes consist of the first 21 nodes with the highest number of votes. And those after 22nd are profit nodes. If the number of votes is greater than 0.5% of the total mortgage amount of CDX, it can become a profit node. Users can get dividends by voting for block-generating nodes and profit nodes.
 
-### **出块奖励和投票手续费奖励**
+### Block-generating rewards and voting fee rewards
 
-出块奖励意即生产区块的奖励，设定为区块奖励的3%，按照节点的出块币龄（连续出块时间）作为权重来分配出块奖励，如果某个节点在一个周期中有漏块情况发生，则重置出块权重。当出块节点产生换届时，所有节点的出块权重都重置
-投票奖励为用户投票收益手续费，手续费率默认值为10%，节点可自由设计手续费率（0%-100%)。
+Block-generating reward means the reward of the block production, which is set to 3% of the block reward, and it is allocated according to the node's block-generating coinage (continuous block-generating time) as the weight. If there are blocks missing in a cycle, the weight is reset. When the block-generating node is changed, the block weights of all nodes are reset.
+The voting reward is the handling fee of user's voting income. The default rate of fee is 10%, and the node can freely design the rate (0%-100%).
 
-出块节点需要抵押一部分系统代币作为押金，如果押金低于最低值（当前每个块的出币量*8228），则没有出块奖励,并且不能竞选出块BP。出块节点漏块将扣除押金，每少生产一个区块将扣除该区块奖励的2倍押金，（例：如果当时系统一个区块块发行1个代币就会被扣除2个代币）。未出块扣除的罚金由提议多签惩罚BP的用户和同意多签的前14名节点平分（发起方50%同意多签50%）。被踢出后出块节点进入为期两天的观察期，此期间用户投票无挖矿奖励。两天观察期完成后BP可申请恢复正常,再进入正常选举,产生正常投票挖矿收益。
-如果在出块过程中，押金不足则需要踢出出块节点1小时，。
+The block-generating node needs to mortgage a part of the system tokens as a deposit. If the deposit is lower than the minimum value (currently the amount of coins per block *8228), there will be no block reward and the node cannot run for BP. The deposit will be deducted from the block missing, and twice the deposit of the block reward will be deducted for each less produced block (for example, if 1 token is issued in one block at the time, 2 tokens will be deducted).
 
-### **创世引导节点**
+The penalty is split equally between users who propose to penalize BP with multi-sign and the top 14 nodes who agree to multi-sign (50% for initiator, 50% for multi-sign). After being kicked out, the node enters a two-day observation period, during which users vote with no mining rewards. After the two-day observation period, BP can apply to return to normal and enter the normal election, obtaining the voting mining income.
+If the deposit is insufficient in the process of block producing, the node will be kicked out for 1 hour.
 
-26个创世引导节点将由开发团队启动，创世引导节点的票数采用阶梯票数以方便社区BP竞选出块BP(阶梯为4个400000票,4个600000票,3个1300000票,2个2100000票,8个10000000票,5个100000票备选节点),在1年后系统合约将自动销毁借出的代币，期间没有任何账户拥有这些代币的使用权。创世引导节点无投票分红，无法被用户投票，创世引导节点获得的出块奖励代币将锁定在一个基金会账户里，无法被任何人挪用，未来将转移至节点多签社区账户由社区处理。
+### Genesis Bootstrap Nodes
 
-## 4. 链上资源使用
+26 genesis bootstrap nodes will be launched by the development team. The number of votes for the genesis bootstrap nodes are in the form of  ladder votes to facilitate the community BPs to campaign for block-producing BP (the ladder is four 400000 tickets, four 600000 tickets, three 1300000 tickets, three 2100000 tickets, eight 10000000 tickets and five 100000 alternative nodes). The system contract will automatically destroy the lent tokens after one year, during which no account has the right to use these tokens. The genesis bootstrap node has no voting dividends and cannot be voted by the users. The block reward tokens obtained by the genesis bootstrap node will be locked in a foundation account and cannot be misappropriated by anyone. In the future, it will be transferred to the community multi-sign account and be handled by the community.
 
-CODEX系统上任何资源的使用均需要抵押系统代币CODEX获取。前63072000个区块之前为账户低保阶段，此期间每个新注册用户将默认获得一定数量的日常转账所需的系统资源。以下系统资源均需要抵押系统代币获取，代币抵押后需要3天才可以撤回抵押状态
+## 4. Resource usage on the chain
 
-- 链上治理投票
-- 节点押金
-- 中继验证人押金
-- 注册交易所账户，开通交易对(仅交易所账户可以开通交易对)
-- 使用链上交易/期权/借贷等系统集成合约
+The use of any resource on the CODEX system requires a mortgage system token CODEX. The first 63072000 blocks are in the account minimum-guarantee phase, during which each newly registered user will receive a certain amount of system resources required for daily transfer by default. The following system resources all need to be obtained by mortgaging system tokens. It takes 3 days to withdraw the mortgage status after the token is mortgaged
 
-## 5. 链上去中心化的预算系统
+- Governance voting on the chain
+- Node deposit
+- Relay verifier deposit
+- Register an exchange account and open a transaction pair (only the exchange account can open a transaction pair)
+- Use system integration contracts such as transaction/options/loan on the chain
 
-可持续发展是一个区块链项目最为重要的一部分，目前大多数区块链项目的预算系统分为两个极端，100%奖励矿工的POW网络依赖开发者提供志愿服务的做法无法保障可持续发展，一些POW区块链的代码库已经很久没有再更新。而一地鸡毛的ICO虽然在早期为各个项目提供了足够的资金，但这些资金却没能有效地激励项目发展，ICO一旦完成，大部分开发者可能会在获得收益后逐渐放弃这个项目，只有少数开发者会继续工作。
-我们惊喜的发现DASH的去中心化预算系统有望解决以上问题，基于DASH的预算系统，我们做了一定程度的改进：
-Codex预算资金系统的基本原理是通过节点投票决定预算资金的分配。
-任何人都可以到CODEX预算系统去申请预算提案（需要缴纳N个CDX作为提案费，以防有人提垃圾提案），需详细说明提案目标，如何实施，实施周期和所需成本，需要多少CDX、预计可以为CODEX生态带来怎样的回报。
-所有当前的出块节点，会定期查看这些提案的内容，根据自己的判断进行投票（可以同意、不同意或者弃权），只要提案获得大于2/3的投票支持，这个提案就获得了通过。
-包括开发团队的工资预算、各个区域的推广预算、钱包和交易所的合作预算、其他合作预算等，每个通过后的提案都会变成为一个DAO（去中心化的自治组织），自发的运转起来。
-提案通过后，提案人在下一个区块奖励中，会获得申请的CDX数量去执行自己的提案内容。
+## 5. The decentralized budget system on the chain
 
-## 6. Codex公测期间的相关参数调整说明
+Sustainable development is the most important part of a blockchain project. Currently, the budget system of most blockchain projects is divided into two extremes. The POW network that rewards 100% miners cannot guarantee sustainable development by relying on developers to provide volunteer services. Some codebases of POW blockchains have not been updated for a long time. However, although the ICO provided sufficient funds for various projects in the early stage, these funds failed to effectively stimulate the development of the project. Once the ICO was completed, most developers would gradually abandon the project after gaining profits, and only a few developers would continue to work.
 
-### 6.1 周期
+We were pleasantly surprised to find that DASH's decentralized budget system is expected to solve the above problems. Based on DASH's budget system, we have made some improvements:
+The basic principle of the Codex budget funding system is to determine the allocation of budget funds through node voting.
 
-测试期间每个 BP 出连续生产3 个区块,21 个 BP 生产63个区块为一个周期.
+Anyone can go to the CODEX budget system to apply for a budget proposal (need to pay N CDX as a proposal fee to prevent someone from making a garbage proposal). It is necessary to specify the objectives of the proposal, how it will be implemented, how long it will take and how much it will cost, how much CDX will be required, and what the expected return on the CODEX ecosystem will be.
+All current block-generating nodes will periodically review the content of these proposals and vote at their own discretion (agree, disagree, or abstain). If the proposal receives more than two-thirds of the votes, the proposal is approved.
 
-### 6.2 挖矿奖励发放周期
+Including the development team's salary budget, promotion budgets of various regions, cooperative budget of wallet and exchange, and other cooperation budgets, etc., each passed proposal will become a DAO (decentralized autonomous organization) that operates spontaneously.
 
-测试期间每隔 5 个周期算一个挖矿奖励发放周期,发放一次挖矿奖励.
+After the proposal is approved, the proposer will receive the amount of CDX applied for in the next block reward to execute the proposal.
 
-### 6.3 慢启动周期
+## 6. Instructions for adjustment of relevant parameters during Codex beta testing
 
-测试期间慢启动周期为 10 个挖矿奖励发放周期.
+### 6.1 Cycle
 
-### 6.4 通胀发行
+During the test, each BP produces 3 blocks in succession, and 21 BPs produce 63 blocks for one cycle.
 
-慢启动周期的初始通胀为每个周期 58.6 个币,也就是 1 个块 0.9301 个币,增速为 1.025 慢启动之后的初始通胀为 126 个币,也就是 1 个块 2 个币 增速为 1.001 .
+### 6.2 Mining rewards payment cycle
+
+During the test, mining rewards will be awarded every 5 cycles.
+
+### 6.3 Slow launch cycle
+
+The slow launch period during the test is 10 mining rewards payment cycles.
+
+### 6.4 Inflation issuance
+
+The initial inflation of the slow launch cycle is 58.6 coins per cycle, that is 0.9301 coins per block, and the growth rate is 1.025. The initial inflation after the slow launch cycle is 126 coins, that is 2 coins per block and the growth rate is 1.001.
