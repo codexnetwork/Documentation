@@ -14,21 +14,21 @@ codex 中继链接点部署，部署环境最低配置：64位 ubuntu 16.04版�
     export configpath='~/eosforce/config'
     export datapath='~/eosforce/data'
     mkdir -p ~/eosforce/config
-    cp build/contracts/contracts/force.msig/force.msig.abi  ~/eosforce/config/
-    cp build/contracts/contracts/force.msig/force.msig.wasm  ~/eosforce/config/
+    cp build/contracts/force.msig/force.msig.abi  ~/eosforce/config/
+    cp build/contracts/force.msig/force.msig.wasm  ~/eosforce/config/
     
-    cp build/contracts/contracts/force.relay/force.relay.abi  ~/eosforce/config/
-    cp build/contracts/contracts/force.relay/force.relay.wasm  ~/eosforce/config/
+    cp build/contracts/force.relay/force.relay.abi  ~/eosforce/config/
+    cp build/contracts/force.relay/force.relay.wasm  ~/eosforce/config/
     
-    cp build/contracts/contracts/force.system/force.system.abi  ~/eosforce/config/
-    cp build/contracts/contracts/force.system/force.system.wasm  ~/eosforce/config/
+    cp build/contracts/force.system/force.system.abi  ~/eosforce/config/
+    cp build/contracts/force.system/force.system.wasm  ~/eosforce/config/
     
-    cp build/contracts/contracts/force.token/force.token.abi  ~/eosforce/config/
-    cp build/contracts/contracts/force.token/force.token.wasm  ~/eosforce/config/
+    cp build/contracts/force.token/force.token.abi  ~/eosforce/config/
+    cp build/contracts/force.token/force.token.wasm  ~/eosforce/config/
     
-    cp build/contracts/contracts/relay.token  ~/eosforce/config/
-    cp build/contracts/contracts/sys.bridge  ~/eosforce/config/
-    cp build/contracts/contracts/sys.match  ~/eosforce/config/
+    cp build/contracts/relay.token  ~/eosforce/config/
+    cp build/contracts/sys.bridge  ~/eosforce/config/
+    cp build/contracts/sys.match  ~/eosforce/config/
     ./build/programs/genesis/genesis && cp genesis.json ~/eosforce/config/
     wget https://updatewallet.oss-cn-hangzhou.aliyuncs.com/codex/config.ini && mv config.ini  ~/eosforce/config/
     wget https://updatewallet.oss-cn-hangzhou.aliyuncs.com/codex/activeacc.json && mv activeacc.json  ~/eosforce/config/
