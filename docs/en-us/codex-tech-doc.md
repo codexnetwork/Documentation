@@ -1,387 +1,400 @@
-# CODEX : 开放包容的高性能多链平台
+# CODEX : open and inclusive high performance multi-chain platform
 
-## 1. 背景
+## 1. Backgroud
 
-未来一段时间内, 区块链技术会和目前成熟的数据库技术一样,
-呈现多种不同架构链并存, 多链并存, 同时即存在为通用需求而服务的通用链, 也存在为特殊需求而服务的特化链,同时即存在面向大众的公链, 也存在面向特定用户的私有链.
-另一方面, 随着区块链技术的日益落地应用, 各个链之间的交互需求会日益紧密, 不同确认机制下的跨链需求将会极其常见.
+In the future, block chain technology will be the same as the current mature database technology.
 
-未来的区块链架构师将会根据其面临的需求, 将会选择最合适的几种公链或私链来处理不同需求, 同时会为各个链之间选择合适的跨链方式, 以此将整个系统整合起来, 这类似与当前的数据库技术, 在当今常见的软件架构中, 往往会根据数据的使用需求选择不同的数据库存储, 之后通过不同的技术, 如消息队列、RPC接口等来进行各个数据库及用户之间数据的传递与读写.
+A variety of different architecture chains coexist, multi-chains coexist. At the same time, there are general chains serving for general needs, special chains serving special needs, public chains facing the public, and private chains facing specific users.
 
-当前很多声音认为未来将会出现少数可以解决所有问题的区块链技术出现, 很多项目也以此作为卖点和目标, 但是对比现有成熟的技术, 实际上, 由于需求迥异, 在考虑成本及效率的情况下, 任何技术都没有找到放之四海皆准的解决方案, 区块链技术同样如此.
+On the other hand, with the increasing application of block chain technology, the interaction requirements between chains will become increasingly close, and cross-chain requirements under different validation mechanisms will be extremely common.
 
-## 2. 愿景
+Future block chain architects will choose the most suitable public or private chains to deal with different needs according to the needs they face. At the same time, they will choose the appropriate cross-chain mode for each chain to integrate the whole system. Similar to the current database technology, in today's common software architecture, they often choose different data store according to the needs of data use. And then through different technologies, such as message queue, RPC interface, to transfer and read and write data between various databases and users.
 
-`CODEX`致力于建立一个开放包容的高性能多链生态, 为区块链的实际落地提供支持.
+At present, many voices think that there will be a few block chain technologies that can solve all the problems in the future, and many projects use them as selling points and targets. But compared with the existing mature technologies, in fact, because of the different needs, considering the cost and efficiency, no technology can find a universal solution, and so does block chain technology.
 
-## 3. 技术架构
 
-Codex是一套多链技术生态建设方案, 主要包括三大方面:
+## 2. Vision
 
-- `Codex.IO Framework` : 高性能模块化区块链底层框架
-- `Codex.Relay` : 高性能跨链服务
-- `Codex.SDP` : 多链开发工具集
+` CODEX is committed to building an open and inclusive high-performance multi-chain ecosystem to support the actual landing of block chains.
+
+
+## 3. Technology Acchitecture
+
+Codex is a multi-chain technology ecological construction program, which mainly includes three aspects:
+
+- `Codex.IO Framework` : High Performance Modular Block Chain Bottom Framework
+- `Codex.Relay` : High Performance Cross-Chain Service
+- `Codex.SDP` : Multi-Chain Development Toolset
 
 ### Codex.IO Framework
 
-如上分析, 当讨论多链生态中的架构时, 解决问题的思路应该倾向于使用特定实现的链来高效的解决特定的需求,
-这要求开发者可以快速的启动一条链, 同时只需要关注特定实现的部分, 如果想要达到这一点, 需要一系列完善高可定制化的区块链开发框架,
+As mentioned above, when discussing the architecture of multi-chain ecosystem, the idea of solving problems should be to use specific implementation chains to efficiently address specific needs.
 
-为此, 我们构想并设计了Codex.IO项目, 这一项目的目标是构建一个高可定制高性能的区块链开发框架,
+This requires developers to start a chain quickly, while only focusing on specific parts of the implementation. If they want to achieve this, they need a series of highly customizable block chain development frameworks.
 
-为了保证区块链的拓展性和性能, Codex.IO选择基于类POS共识算法作为其主要的共识方向,
-目前EOSIO作为最具有可用性的类POS开发框架, 我们将会在当前阶段采用最具备可用性的EOSIO作为底层开发框架，
-在未来我们会在更去中心化和扩展性更强的方向上探寻更好的解决方案.
+To this end, we conceived and designed the Codex.IO project, which aims to build a highly customizable and high-performance block chain development framework.
 
-EOS技术是一种极具潜力的区块链开发技术,
-一方面, 基于DPOS共识, EOS链可以在当下满足超过4000+TPS的需求,
-另一方面, EOS提供了一套可以开发中大规模DAPP的智能合约开发平台.
+In order to ensure the extensibility and performance of block chains, Codex.IO chooses POS-like consensus algorithm as its main consensus direction.
+As the most available POS-like development framework, EOSIO will be adopted as the underlying development framework at the current stage.
+In the future, we will seek better solutions in the direction of more decentralization and scalability.
 
-基于以上两点, 在中长期之内, EOS技术以一套行之有效何以快速落地的区块链技术,
-虽然其他技术也同样极具潜力, 但是需要很长一段时间的完善, 对于任何一个技术的应用, 从零到一总是最难也是最关键的,
-由此我们选则基于EOS技术开发Codex.IO项目.
+EOS technology is a potential block chain development technology.
+On the one hand, based on the DPOS consensus, EOS chains can meet the needs of more than 4000 + TPS at present.
+On the other hand, EOS provides an smart contract development platform that can develop medium and large-scale DAPP.
 
-但是EOS技术毕竟是一个特定的公链项目, 这意味着在EOS中, 设计者不会考虑过多的链拓展性,
-因此我们需要对EOS技术进行一次彻底的解构, 这也是Codex.IO的一项主要工作.
+Based on the above two points, EOS technology provides an effective block chain technology which can land quickly in the medium and long term.
+Although other technologies also have great potential, they need to be improved for a long time. For any application of technology, from zero to one is always the most difficult and crucial.
+Therefore, we choose to develop Codex.IO project based on EOS technology.
 
-#### Codex.IO层次化架构
+But EOS technology is a specific public chain project after all, which means that in EOS, designers will not consider too much chain extensibility.
+Therefore, we need a thorough deconstruction of EOS technology, which is also a major work of Codex.IO.
 
-为了满足不同的需求, Codex.IO需要做到‘三个无关’ : 共识无关,虚拟机无关,接口无关,
-这样基于Codex.IO的开发者可以根据其需求选择不同的共识算法, 不同的执行虚拟机, 并且可以方便的增加或者修改原有链的接口,
-为了达到这个目的, 我们设计了全新的分层区块链基础开发框架, 剥离原有各个层次之间的依赖.
+#### Codex.IO Hierarchical Architecture
 
-Codex.IO架构：
+In order to meet different needs, Codex.IO needs to do three things: consensus is irrelevant, virtual machine is irrelevant, interface is irrelevant.
+In this way, developers based on Codex.IO can choose different consensus algorithms and different virtual machines according to their needs, and can easily add or modify the interface of the original chain.
+In order to achieve this goal, we have designed a new layered block chain infrastructure development framework, stripping the dependence between the original layers.
 
-![Codex.IO架构](../assert/pic1.png)
+Codex.IO Architecture：
 
-#### 拓扑层
+![Codex.IO Architecture：](../assert/pic1.png)
 
-拓扑层体现为区块拓扑结构, 最常见的区块拓扑结构即区块链, 当然不同的共识算法会决定区块拓扑结构的不同.
+#### Topological Layer
 
-将拓扑层剥离出来可以使得Codex.IO便于适配不同的共识算法, 从原始的DPOS实现, 也可以转变为POS, POW等实现, 更可以采用DAG等不同的区块拓扑结构的共识算法.
+Topology layer is represented by block topology structure. The most common block topology structure is block chain. Of course, different consensus algorithms will determine the difference of block topology structure.
 
-#### 迭代层
+Peeling out the topology layer can make Codex.IO easy to adapt to different consensus algorithms, from the original DPOS implementation to POS, POW and other implementations, and also can adopt different block topology(such as DAG) consensus algorithms.
 
-为了分割执行层和拓扑层, 我们引入了区块迭代层来向执行层隐藏区块层的细节.
+#### Iterative Layer
 
-#### 执行层
+In order to divide the execution layer and the topology layer, we introduce the block iteration layer to hide the details of the block layer from the execution layer.
 
-执行层体现为行为逻辑, 在EOS极其衍生技术中, 行为由Action定义, 系统负责解释Action并依此更新链状态机,
+#### Execution Layer
 
-在解释Action的过程中, 虚拟机是非常重要的部分, 除了少量由C++层实现的Action之外, 其他的Action都在虚拟机中执行,
-在Codex.IO中, 我们将会实现模块化的虚拟机实现, 通过将执行层与其他模块分离,
-Codex.IO将适配不同的虚拟机系统, 从BTC脚本这样的特定实现, 到WASM/JVM/V8这样的通用虚拟机, 甚至Lua/Python这样的嵌入式语言运行时,
-这会极大的减少传统企业拥抱区块链的的技术门槛, 使得区块链技术的引入不会影响企业原有的技术体系,
-另一方面, 一些简单易用的语言平台可以吸引更多的开发者实现其创意.
+In EOS and its derivatives, behavior is defined by action, and the system is responsible for interpreting action and updating the chain state machine accordingly.
 
-#### 状态层
+In the process of interpreting action, virtual machine is a very important part. Except for a few actions implemented by C++ layer, other actions are executed in virtual machine.
+In Codex.IO, we will implement a modular virtual machine implementation by separating the execution layer from other modules.
+Codex.IO will be adapted to different virtual machine systems, from specific implementations such as BTC scripts to general-purpose virtual machines such as WASM/JVM/V8 and even embedded language runtimes such as Lua/Python.
+This will greatly reduce the technological threshold for traditional enterprises to embrace block chains, so that the introduction of block chains technology will not affect the original technological system of enterprises.
+On the other hand, some simple and easy-to-use language platforms can attract more developers to realize their creativity.
 
-在绝大多数区块链技术中, 节点会维护一个具备准实时读写效力的状态机系统,
-在EOS中这个系统体现为EOS节点的内存数据,
-目前这些数据存储在EOS实现的一个不算完善的可落地内存数据库中.
-丰富的数据结构可以帮助开发者更好更快的实现其需求,
-所以在Codex.IO中, 我们在执行层中分离状态机的实现, 形成一个承上启下的状态层,
-由此一方面允许开发者拓展更多的内存数据结构类型, 帮助开发者更好的实现DAPP.
-另一方面这样一个层的引入可以向界面层隐藏执行层的实现细节.
+#### State Layer
 
-#### 界面层
+In most block chain technologies, nodes maintain a state machine system with quasi-real-time read-write capability.
+In EOS, this system is embodied as the memory database of the EOS node.
+At present, these data are stored in an imperfect durable memory database implemented by EOS.
+Rich data structures can help developers achieve their needs better and faster.
+So in Codex.IO, we separate the implementation of state machines in the execution layer to form a connecting layer.
+On the one hand, it allows developers to expand more types of memory data structures and help developers better implement DAPP.
+On the other hand, the introduction of such a layer can hide the implementation details of the execution layer from the interface layer.
 
-界面层主要体现为链对外部的API和节点间的P2P协议,
+#### Interface Layer
 
-不同用途的链注定需要提供不同的API接口, Codex.IO需要允许二次开发者简单快捷的增加和修改链的API,
-在各种主流XX技术架构中, 往往会根据不同的需求使用不同的API实现方案,比如通用的HTTP RES API, 以及如gRPC、SOAP等各种XXXRPC实现, 还有各种消息队列等等.
-区块链作为全新价值传输网络，在与当前世界各个业务的交互中, 必须保持良好的兼容性,降低价值交换的门槛.
-当前开发者需要自行实现对原有系统的接口, 如各种EOS的插件, 开发者不得不投入大量时间重写开发已有业务接口逻辑.
-为了使开发者聚焦在本身的业务开发中, 我们设计了独立的界面层, 通过状态层与其他层次解耦.
+Interface layer is mainly embodied in API and P2P protocol between nodes.
 
-另一方面, 作为去中心化的区块链系统, P2P协议是节点间组网的基础协议, 在EOS中, 设计者自行实现了一套不算完善的协议, 虽然在一定程度上可以更换实现, 但是需要大量的开发工作.
-而Codex.IO中, 我们将适配主流的P2P协议, 如`libp2p`.
 
-综上所述, Codex.IO致力于完成一个层次化的高可定制区块链底层框架, 我们通过分层架构, 实现各个层次之间的低耦合,因此Codex.IO更具包容性, 可以满足大多数链的基础开发需求.
 
-### Codex.Relay 中继链
+Chains for different purposes are destined to need to provide different API interfaces. Codex.IO needs to allow secondary developers to simply add and modify APIs for chains.
 
-在多链架构中链之间的通信机制将是其最重要的一个部分,
+In various mainstream technology architectures, different API implementations are often used according to different requirements, such as general HTTP REST API, various RPC implementations such as gRPC, SOAP, and various message queues.
+As a brand-new value transmission network, block chains must maintain good compatibility and reduce the threshold of value exchange in the interaction with various businesses in the world.
+At present, developers need to implement their own interfaces to the original system, such as various EOS plug-ins. Developers have to spend a lot of time rewriting the development of existing business interface logic.
+In order to make developers focus on their own business development, we design an independent interface layer, which is decoupled from other layers through the state layer.
 
-高性能的多链系统需要高性能的跨链机制,
+On the other hand, as a de-centralized block chain system, P2P protocol is the basic protocol for inter-node networking. In EOS, the designer implements a set of incomplete protocols by himself. Although it can be replaced to some extent, it needs a lot of development work.
+In Codex.IO, we will adapt to the mainstream P2P protocol, such as 'libp2p'.
 
-并不是增加链的数量就可以无限叠加链的TPS.我们在实际的多链架构中预演中, 单一业务的每秒处理的事务数(TPS)上限往往会受到跨链每秒处理的事务数(TPS)的限制, TPS会成为制约整个多链生态落地能力的一个瓶颈, 所以在Codex生态中, 必须提高跨链性能.
+To sum up, Codex.IO is committed to the implementation of a hierarchical framework for high customizable block chains. Through the hierarchical architecture, we achieve low coupling among all levels. Therefore, Codex.IO is more inclusive and can meet the basic development needs of most chains.
 
-所以Codex.Relay将会基于Codex.IO实现, 通过定制功能, 我们可以基于Codex.Relay实现链间高性能的通信.
+### Codex.Relay Relay Chain
 
-同时Codex.Relay是一种服务而非封闭生态,
+The communication mechanism between chains in multi-chain architecture will be the most important part of it,
 
-![Codex.IO架构](../assert/pic4.png)
+High Performance Multi-Chain Systems Need High Performance Cross-Chain Mechanisms,
 
-我们把使用Codex.Relay中继服务的链称为Codex.Relay的侧链, 这里侧链并不意味其与Codex.Relay产生主次关系.
-当然侧链也可以基于Codex.Relay的共识加强自身的安全性, 甚至完全基于Codex.Relay共识来达成侧链的共识.
+TPS can not be infinitely superimposed by increasing the number of chains. In the preview of the actual multi-chain architecture, the maximum number of transactions per second (TPS) processed by a single service is often limited by the number of transactions per second (TPS) processed across chains. TPS will become a bottleneck restricting the landing ability of the whole multi-chain ecosystem, so cross-chain performance must be improved in Codex ecosystem.
 
-数据层面上, 侧链向Codex.Relay提交其区块数据以及需要中继的状态变换, 执行这些操作的角色成为trunk, trunk可以是侧链的核心节点, 也可以是由利益相关方组成的担保节点的集合,
+So Codex. Relay will be based on Codex.IO. By customizing functions, we can achieve high-performance communication between chains based on Codex.Relay.
 
-在提交者中, 我们分为了以下几种类型的trunk:
+At the same time, Codex.Relay is a service rather than a closed ecosystem.
 
-committer: 负责传输侧链区块中需要的Action到Codex.Relay.
-watcher: 负责传输Codex.Relay区块中需要的Action到侧链.
-validator: 负责检查transfer和watcher的换届和抵押是否同步, 并检查他们是否存在集体作恶的情况.
 
-committer面向Codex.Relay, 其行为体现在提交至Codex.Relay上的action, committer通过多签的方式向Codex.Relay提交侧链的区块, 这一机制确保大多数committer诚实时通道的安全性.
+![Codex.IO Architecture](../assert/pic4.png)
 
-与committer类似, watcher的行为体现在向侧链提交的Codex.Relay行为, 这里committer与watcher互相进行监督, 当有一方集体作恶时, 另一方将会发现问题并暂停跨链通道.
+We call the chain using Codex.Relay relay service the side chain of Codex.Relay, where the side chain does not mean that it has primary and secondary relationship with Codex.Relay.
+Of course, side chains can also enhance their own security based on the Codex.Relay consensus, or even completely based on the Codex.Relay consensus to reach the consensus of side chains.
 
-validator由一组在Codex.Relay具有核心利益的节点构成, 其负责校验committer和watcher是否集体作恶, 当出现作恶情况时, validator将会通过多签的方式, 惩罚作恶者并恢复跨链通道.
+At the data level, side chains submit block data to Codex.Relay and state transformations that need to be relayed. The role of performing these operations becomes trunk, which can be the core node of side chains or a set of guarantee nodes composed of stakeholders.
 
-以上角色根据链的不同可能是不同的节点集合, 也可能是同一组节点.
+Among the submitters, we divided them into the following types of trunk:
 
-在实践中, committer应在侧链中具有核心利益, 对于特定的链, 可以由侧链的BP担任传输者, 这样在跨链体系中, committer将不会降低整个体系的去中心化程度.
-validator作为整个跨链过程中的监管者, 在整个体系中非常重要, 对于Codex.Relay和主要的链之间的跨链通道, validator会由Codex.Relay的核心出块者来组成,
-例如当Codex.Relay基于DPOS时, validator由Codex.Relay的超级节点组成, 当Codex.Relay基于POS时, 检查者由每一阶段选择的出块节点来组成.
+committer: Responsible for the transfer of actions needed in the side chain block to Codex.Relay.
+watcher: Responsible for the transfer of actions needed in the Codex.Relay block to side chain.
+validator: Responsible for checking whether transferer and watcher's renewal and mortgage are synchronized and whether there is collective evildoing.
 
-对于Codex.Relay来说, 侧链的区块由侧链的共识机制决定, Codex.Relay被设计成一种服务, 所以是共识无关,链无关的, 侧链的区块由committer经过多签提交给Codex.Relay, 在Codex.Relay上根据区块来执行特定的状态转换, 以此完成由侧链到中继链的状态同步
+Committer is oriented to Codex.Relay, and its behavior is embodied in the action submitted to Codex.Relay. Committer submits the block of side chain to Codex.Relay by multi-signature, which ensures the security of the channel when most committers are honest.
 
-![Codex.IO架构](../assert/pic2.png)
+Similar to committer, watcher's behavior is embodied in the Codex.Relay behavior submitted to the side chain, where committer and watcher supervise each other. When one party commits a collective evil, the other party will find the problem and suspend the cross-chain channel.
 
-对于侧链来说, Codex.Relay的区块由Codex.Relay的共识机制决定, 侧链通过watcher节点集合通过多签响应Codex.Relay的区块, 以此完成由中继链到侧链的状态同步.
+Validator consists of a group of nodes with core interests in Codex.Relay. It is responsible for verifying whether committers and watchers commit collective evils. When evils occur, the validator will punish the evildoers and restore cross-chain channels by multi-signature.
 
-![Codex.IO架构](../assert/pic3.png)
+These roles may be different sets of nodes or the same set of nodes depending on the chain.
 
-在Codex多链生态中, 侧链之间并不直接通信, 一是因为链之间的架构迥异, 很难进行任意链间的适配, 二是多链架构中链数量比较多, 如果都进行链间两两互联, 会导致大量的确认和等待时间, 会严重降低链的效率.
+In practice, committer should have a core interest in the side chain. For a particular chain, BP of the side chain can act as the transferer. In the cross-chain system, committer will not reduce the degree of decentralization of the whole system.
+Validator, as the supervisor of the whole cross-chain process, is very important in the whole system. For the cross-chain channel between Codex.Relay and the main chain, validator will be composed of the core BPs of Codex.Relay.
+For example, when Codex.Relay is based on DPOS, the validator is composed of super nodes of Codex.Relay, and when Codex.Relay is based on POS, the validator is composed of selected block producers at each stage.
 
-需要注意的是, 在Codex多链生态中, Codex.Relay并不具备排他性, 在多链生态中, 会存在着多个Codex.Relay链并存的情况, 其中一个Codex.Relay可以作为中继大多数链的一个通用中继, 而在一些特殊的链间, 将会存在着一系列特定的Codex.Relay作为专用中继.
+For Codex.Relay, the block of the side chain is determined by the consensus mechanism of the side chain. Codex.Relay is designed as a service, so it is consensus-independent and chain-independent. The block of the side chain is submitted to Codex.Relay by committer through multi-signatures. On Codex.Relay, specific state transitions are performed according to the block to complete the state synchronization from side chain to relay chain.
 
-以上基于区块的通信, 我们可以实现跨链状态同步, 在此基础之上, 我们可以实现很多基本的跨链功能:
+![Codex.IO Architecture](../assert/pic2.png)
 
-#### 1. 链间价值通道
+For the side chain, the block of Codex.Relay is determined by the consensus mechanism of Codex.Relay. The side chain responds to the block of Codex.Relay through the watcher node set through multiple signatures, thus completing the state synchronization from the relay chain to the side chain.
 
-对于大多数链, 其Token都是体现用户权利的重要指标, 链之间的Token传递通道也将会是最主要的跨链需求.
+![Codex.IO Architecture](../assert/pic3.png)
 
-通过链间状态的同步机制, 我们很容易实现Token信息的跨链同步:
+In Codex multi-chain ecosystem, there is no direct communication between side chains. First, it is difficult to adapt any chain because of the different structure between chains. Second, there are many chains in multi-chain architecture. If any two chains are interconnected, a lot of confirmation and waiting time will be caused, which will seriously reduce the efficiency of the chain.
 
-![Codex.IO架构](../assert/pic6.png)
+It should be noted that in Codex multi-chain ecosystem, Codex.Relay is not exclusive. In multi-chain ecosystem, there will be multiple Codex.Relay chains coexisting. One of them can be used as a general relay to relay most chains, while in some special chains, there will be a series of specific Codex.Relay as a special relay.
 
-![Codex.IO架构](../assert/pic5.png)
+Based on above block-based communication, we can achieve cross-chain state synchronization. On this basis, we can achieve many basic cross-chain functions:
 
-对于多链生态的Token跨链,未来主要会有两种形式, 首先是一部分接受度广用途重要的链的Token, 如BTC、ETH、EOS等Token, 将会被直接映射至很多其他链中, 并在其中使用,
-甚至很多链将会采用无币模式运行, 这类Token往往会直接被部分链接受和使用.
+#### 1. Inter-chain Value Channel
 
-其次是一部分链的Token只在其发行的链中使用, 并不会也不需要被其他链使用, 显然大多数DAPP不可能处理任意Token使用.这种Token需要由其他Token通过特定的方式转换而被用户得到,而转换的方式往往是通过交易, 为了方便不同的Token在多链生态中流转与使用, 我们在Codex.Relay中预置Token交易兑换合约, 方便用户转换Token.
+For most chains, Token is an important indicator of user rights, and the Token transmission channel between chains will be the main cross-chain requirement.
 
-![Codex.IO架构](../assert/pic8.png)
+Through the inter-chain state synchronization mechanism, we can easily achieve cross-chain synchronization of Token information:
 
-#### 2. 多链合约
+![Codex.IO Architecture](../assert/pic6.png)
 
-在多链生态中会有大量的DAPP同时在不同的链部署合约, 这些链上的合约共同完成DAPP的功能,基于链间状态的同步机制, 可以比较容易的实现跨链合约间相互调用的机制.通过这一套机制, 将极大改变先行的DAPP架构, 很多通用的逻辑和功能将会部署为特定链上的服务合约, 如预言机服务, 密码学安全随机数的随机数服务, IPFS存储服务等.
+![Codex.IO Architecture](../assert/pic5.png)
 
-![Codex.IO架构](../assert/pic7.png)
+For multi-chain ecosystem Token, there will be two main forms in the future. First, some tokens, such as BTC, ETH, EOS, which were widely accepted, will be mapped directly to many other chains and used in them.
+Even many chains will run in a coinless mode, and such tokens are often used directly by them.
 
-DAPP的开发者只需要通过多链合约通信机制使用这些服务即可, 这将大大降低DAPP的开发成本和难度.
+Secondly, other tokens are only used in its own chains, and will not and need not be used by other chains. Obviously, most DAPP can not handle arbitrary token use. these tokens need to be converted by other tokens in a specific way, which is often achieved by users through transactions, in order to facilitate different tokens transfer and use in multi-chain ecosystem, we pre-set Token exchange contract in Codex.Relay to facilitate users to convert tokens.
 
-#### 3. 跨链同步实时状态信息
+![Codex.IO Architecture](../assert/pic8.png)
 
-很多时候DAPP开发者需要在两个链间同步实时状态信息, 一个比较典型的应用是在两个基于Codex.IO的链间共享账户系统.
+#### 2. Multi-chain contract
 
-`Codex.Relay`基于`Codex.IO`, 其表现为一个DAPP, 为多链生态中的各个链提供中继和跨链服务, Codex.Relay同时也是一链一DAPP的最好样例.
+In multi-chain ecosystem, there will be a large number of DAPP contracts deployed in different chains at the same time. These contracts jointly fulfill the functions of DAPP. Based on the inter-chain state synchronization mechanism, it is easier to realize the mechanism of inter-chain contract invocation. Through this mechanism, the prior DAPP architecture will be greatly changed, and many common logic and functions will be deployed as service contracts on a specific chain. Such as predictor service, cryptographic secure random number generation service, IPFS storage service, etc.
 
-### Codex.SDP 超级DAPP开发平台
+![Codex.IO Architecture](../assert/pic7.png)
 
-多链生态也会为DAPP开发带来新的挑战,
-传统的DAPP基于单个链上的合约以及一些数据缓存服务,
-而在多链生态下, 一个DAPP会由多个不同链上的多个合约组成
+The developers of DAPP only need to use these services through multi-chain contract communication mechanism, which will greatly reduce the development cost and difficulty of DAPP.
 
-为了应对多链对开发带来的复杂性, 需要全新的DAPP开发形式,
-由此我们提出了Codex.SDP, 以此将会给开发者带来全新的DAPP开发体验, 并重新定义区块链应用开发模式.
+#### 3. Cross-Chain Synchronization of Real-Time State Information
 
-![Codex.SDP特性](../assert/pic9.png)
+Many times DAPP developers need to synchronize real-time status information between two chains. A typical application is to share accounts between two chains based on Codex.IO.
 
-首先, 随着多链生态中链的多样化, 开发者会面临链合约版本碎片化的问题,
-不同链之间总会有一定的差异, 简单的依赖于各个链自身提供的开发工具, 会给DAPP开发者带来极大的困扰,为了解决这个问题, Codex.SDP将会添加一个链实现层来隐藏各个链的不同, 让开发者只用编码一次即可多个链部署.
+`Codex.Relay`is based on `Codex.IO', which is represented as a DAPP, providing relay and cross-chain services for various chains in a multi-chain ecosystem. Codex.Relay is also the best example of a one chain one DAPP.
 
-其次, 在多链生态中, 开发者需要在多个链中部署合约, 这些合约的更新与维护将会给DAPP开发者带来很大问题,Codex.SDP将会提供一套基础工具来帮助用户更新维护多个链上的合约.
+### Codex.SDP Super DAPP Development Platform
 
-再次, Codex.SDP中将会集成全新的DAPP开发工具集, 完善多种开发语言支持, 减轻开发团队技术栈压力.
+Multi-chain ecosystem will also bring new challenges to DAPP development,
+Traditional DAPP is based on contracts on a single chain and some data caching services,
+In a multi-chain ecosystem, a DAPP consists of multiple contracts on multiple different chains.
 
-## 4. 设计思路
+In order to cope with the complexity of multi-chain development, a new development form of DAPP is needed,
+Therefore, we propose Codex.SDP, which will bring developers a new DAPP development experience, and redefine the block chain application development model.
 
-### why 多链
+![Codex.SDP features](../assert/pic9.png)
 
-支持多链是目前区块链发展的一个重要的方向，通过多链我们可以在兼顾当前链安全的同时，为用户和DApp开发者提供丰富的功能，另外一方面，通过跨链可以允许社区启动不同的公链或私链，为DApp提供最适合的运行环境.
+First, with the diversification of chains in multi-chain ecosystem, developers will face the problem of fragmentation of chain contract versions,
+There will always be some differences between different chains. Simply depending on the development tools provided by each chain itself will bring great trouble to DAPP developers. To solve this problem, Codex. SDP will add a chain implementation layer to hide the differences of each chain, so that developers can deploy on multiple chains only with one encoding.
 
-目前几乎所有区块链项目都面临DApp运营成本过高的问题，EOS通过使用DPOS共识使整个链有很高TPS，但是对于超级节点，很多资源在一定时间内依旧是有限的，如RAM，虽然依照摩尔定律，随着时间的推移，整个链会得到更多的资源，但是相对于DApp旺盛且快速增长的需求，短期内很大程度上会出现资源的相对稀缺，加上某些炒作行为的推动，会严重加大开发者的运营成本，这对于整个EOS发展是个很大的阻碍.
+Secondly, in multi-chain ecosystem, developers need to deploy contracts in multiple chains. The update and maintenance of these contracts will bring great problems to DAPP developers. Codex. SDP will provide a set of basic tools to help users update and maintain contracts on multiple chains.
 
-基于以上的问题思考, 一个显而易见的解决方案是使用多条不同或者相同的链来承载DApp, 同时通过跨链技术使得多条独立的链可以相互通信和同步状态, 以此形成一个多链生态体系,
-在这个体系中会有多种不同用途的链:
+Thirdly, Codex. SDP will integrate a new DAPP development toolkit, improve the support of various development languages, and reduce the pressure of the development team technology stack.
 
-- 公链 : 如BTC、ETH、EOS等
-- DAPP链 : 某一个或者某些DAPP专用的链, 往往是基于EOSIO或者Codex.IO进行部分特化
-- 联盟链 : 特定用途的联盟链, 融入多链体系与其他链通信
-- 中继链 : 为链间提供中继服务
+## 4. Design Thought
 
-在多链生态中, 开发者可以为DApp选择最合适的链，这样即为开发者和用户提供丰富的功能又能保证用户资产的安全性，同时我们可以确保全网资源都可以增长，使得资源的稀缺性得到缓解，
-DApp开发者可以自由选择可以负担成本的多链，这样可以保持整个系统的活力.
+### why Multi-Chain
 
-基于EOS所带来的优秀的共识机制设计一套异构多链体系，我们希望这个多链系统形成一个生态，为我们带来以下好处：
+Supporting multi-chains is an important direction of block chain development. Through multi-chains, we can provide abundant functions for users and DApp developers while taking into account the current chain security. On the other hand, through cross-chains, we can allow communities to start different public or private chains and provide the most suitable running environment for DApp.
 
-**稳定而廉价的链上资源** 开发者可以根据自身需求自由选择运行的链，允许多个链接入整个生态，会使得资源的供给可以充分满足市场的需求，
-这样可以稳定链上资源的成本，另一方面，很多应用会希望链上可以提供稳定的资源和TPS，通过部署专门的专用链，可以充分保证DApp运行不会被其他应用干扰.
+At present, almost all block chain projects are facing the problem of high operating costs of DApp. EOS uses DPOS consensus to make the whole chain have high TPS. However, for super nodes, many resources are still limited in a certain period of time. For example, RAM, although according to Moore's law, with the passage of time, the whole chain will get more resources. But compared with vigorous and rapid growth of DAPP requirements, in the short run, the relative scarcity of resources, coupled with the promotion of some hype, will seriously increase the operating costs of developers, which is a great obstacle to the development of EOS as a whole.
 
-**允许扩展链功能** 某些时候开发者和用户需要扩展链功能以实现其特殊的需求，进而部署专门的联盟链或者私链.
+Based on the above considerations, an obvious solution is to use multiple different or identical chains to carry DApp, and at the same time, through cross-chain technology, multiple independent chains can communicate and synchronize with each other to form a multi-chain ecosystem.
+There will be chains of different uses in this system:
 
-**多链间价值交换** 多链系统中通过中继层，可以很方便的交换多个链上的资产，进一步，可以在中继链上部署去中心化的交易所.
+- Public Chain : Such as BTC、ETH、EOS etc.
+- DAPP Chain : Some or some DAPP-specific chains are often partially specialized based on EOSIO or Codex.IO.
+- Alliance Chain : Specific-purpose alliance chains integrated into multi-chain systems and communicate with other chain
+- Relay Chain : Providing relay services between chains
 
-**支持无缝迁移基于其他链的应用** 我们可以引入其他底层链技术和智能合约技术，以链的形式提供给开发者和用户，这样开发者可以很方便的移植已有的应用到生态中.
+In multi-chain ecosystem, developers can choose the most suitable chain for DApp, which not only provides rich functions for developers and users, but also guarantees the security of users' assets. At the same time, we can ensure that the whole network resources can grow, so that the scarcity of resources can be alleviated.
+DApp developers are free to choose multiple chains that can be afforded to keep the whole system alive.
+
+Based on the excellent consensus mechanism brought by EOS, we design a heterogeneous multi-chain system. We hope that this multi-chain system will form an ecosystem, which will bring us the following benefits：
+
+**Stable and inexpensive resources on the chain** Developers can freely choose running chains according to their own needs and allow multiple chains to integrate into the whole ecosystem, which will enable the supply of resources to fully meet the needs of the market.
+This can stabilize the cost of resources on the chain. On the other hand, many applications would like the chain to provide stable resources and TPS. By deploying dedicated chains, DApp can be fully guaranteed not to be interfered by other applications.
+
+**Allow to extended chain functionality** Sometimes developers and users need to extend the chain functionality to meet their specific needs, and then deploy specialized alliance chains or private chains.
+
+**Multi-chain Value Exchange** In multi-chain systems, assets on multiple chains can be easily exchanged through the relay layer. Further, decentralized exchanges can be deployed on the relay chain.
+
+**Support seamless migration of applications based on other chains** We can introduce other underlying chain technology and smart contract technology to provide developers and users in the form of chains, so that developers can easily transplant existing applications into the ecosystem.
 
 ### Why DPOS
 
-区块链作为一种分布式系统, 其共识机制可以说是最重要的组成部分之一,
-在《比特币：点对点电子现金系统》中, 中本聪提出了工作量证明(POW)算法, 以此来实现分布式时间戳服务器,
-工作量证明(POW)算法在比特币的运行中已经被公认为一种有效的去中心化共识算法,
-但是, 工作量证明(POW)算法也被认为是一种低效且高成本的共识算法, 由此社区一直在寻找更好的共识机制.
+As a distributed system, the consensus mechanism of block chains can be said to be one of the most important components,
+In <<Bitcoin: Point-to-Point Electronic Cash System>>, Nakamoto proposed Proof Of Work (POW) algorithm to implement distributed timestamp server,
+Proof Of Work (POW) algorithm has been recognized as an effective de-centralized consensus algorithm in the operation of bitcoin,
+However, Proof Of Work (POW) algorithm is also considered to be an inefficient and costly consensus algorithm, so the community has been looking for a better consensus mechanism.
 
-工作量证明(POW)算法行之有效的一个基本假设是拥有最多处理器能力的组织或者个体遵守规则获利大过其不诚实的获利,
-基于这方面, 社区提出了权益证明算法(POS), 这个算法认为既然POW让拥有最多处理器能力的组织或者个体获利最多,
-那么只要共识算法能够使得获利最多的个体或者组织决定共识机制的运行, 这个共识算法即使没有大量的工作量计算也会和POW一样有效.
+A basic assumption that POW algorithm works well is that organizations or individuals with the most processor capabilities benefit more from compliance than from other dishonest gains,
+In this regard, the community proposes a Proof Of Stake (POS) algorithm, which considers that since POW makes the organization or individual with the most processor capabilities the most profitable.
+So long as consensus algorithm can make the most profitable individual or organization decide the operation of consensus mechanism, the consensus algorithm will be as effective as POW even without a lot of workload calculation.
 
-另一方面, 共识算法的结果可以看作对于某一块高度选出区块的生产者, 生产者可能是一个节点,也可能是得出相同区块的一系列节点,
-由此, 权益证明算法(POS)核心过程往往就是让系统中获利最多的个体或者组织决定区块的生产的算法,
-一般来说, 由单一节点决定区块生产往往会过于中心化, 通过一系列节点间达成共识来生产区块的方式会更好,
-所以POS算法,往往表现为某个时间段内选择一系列节点来共同生产区块, 这些节点可以代表系统中获利最多的个体或者组织.
 
-可以看到, POS算法的关键在于怎样选择能代表系统中获利最多的个体或者组织, 这也是大多数POS算法差异的部分.
 
-早期的POS算法在实践中遇到了大量问题, 比较典型的问题就是“Nothing-at-Stake”攻击, 本质上就是共识算法并没能确保生产区块者代表系统中利益,
-因为利害关系本就是非常复杂的, 常见的解决方案就是添加各种奖励和惩罚机制, 这体现为所谓的“治理机制”,
-既然POS算法依赖于“治理机制”,而选举是一种很典型的社会治理机制, 那么一个很自然的思路就是基于选举来建立治理机制,
-并且基于选举也可以用来决定出块者, 这类似于代议制民主体制, 基于此就是典型的DPOS共识算法.
+On the other hand, the result of consensus algorithm can be regarded as selecting a block producer at a block height, the producer can be a node or a series of nodes,
+Thus, the core process of POS is often an algorithm that allows the most profitable individuals or organizations in the system to determine the production of blocks,
+Generally speaking, block production determined by a single node tends to be too centralized, and it is better to produce blocks by consensus among a series of nodes,
+Therefore, POS algorithm often shows that in a certain period of time, a series of nodes are selected to co-produce blocks. These nodes can represent the most profitable individuals or organizations in the system.
 
-CODEX选择基于EOSIO的DPOS共识机制主要有以下两方面考虑:
+As you can see, the key to POS algorithm is how to select the individuals or organizations that represent the most profitable in the system, which is also the difference of most POS algorithms.
 
-首先, 如上文所述基于POS的共识机制很依赖于治理机制, 基于选举的治理机制虽然不会是最好的治理机制, 但是一种可行的机制.
-其次, CODEX很大程度上需要在提供图灵完备的智能合约的同时保持很高的TPS, 这意味着网络中的全节点必须拥有很强大的计算资源, 这一点决定了网络中全节点数量不会很多, 至少不会每个用户都维护一个全节点,
-在这样的情况下, 无论基于那种共识机制, 出块者节点往往会趋于一个固定的小集合, 如果承认这一点, 那么一个“代议制”的出块节点集合并不会降低整个网络的中心化程度,
+The early POS algorithm encountered a lot of problems in practice. The typical problem is "Nothing-at-Stake" attack, which is essentially a consensus algorithm and fails to ensure that the producer represents the interests of the system,
+Because stakes are inherently very complex, the common solution is to add various incentives and punishment mechanisms, which are embodied in the so-called "governance mechanism",
+Since POS algorithm relies on "governance mechanism" and election is a typical social governance mechanism, a natural way of thinking is to establish governance mechanism based on election,
+And elections can also be used to determine the block producers, which is similar to representative democracy, based on which is a typical DPOS consensus algorithm.
 
-基于以上的考虑, CODEX选择基于EOSIO的DPOS共识机制.
+CODEX chooses EOSIO-based DPOS consensus mechanism with the following two considerations:
 
-### Codex.IO的设计
+First of all, the POS-based consensus mechanism, as mentioned above, relies heavily on the governance mechanism. Although the election-based governance mechanism is not the best one, it is a viable one.
+Secondly, CODEX needs to maintain a high TPS while providing a complete Turing smart contract, which means that full nodes in the network must have very strong computing resources, which determines that the number of full nodes in the network will not be large, at least not every user will maintain a full node,
+In this case, regardless of the consensus mechanism, the block producer node set tends to be a fixed small set. If this is acknowledged, then a "representative" block producer node set will not reduce the decentralization of the whole network,
 
-从一个所谓传统软件架构的角度看区块链技术,直观的态度往往视区块链为一个数据库,比方说,如果仅仅从使用的接口来看,EOSIO从很多方面上非常类似于PostgreSQL,当然区块链技术在传统的数据库技术之上提供了新的特性, 解决了以前没有解决的问题.
+Based on the above considerations, CODEX chooses EOSIO-based DPOS consensus mechanism.
 
-假如我们现在想实现一个基于区块链技术的卡牌游戏, 要实现一个卡牌游戏, 首先这个架构必须满足一个比较高的,同时可水平拓展的性能指标, 也就是要满足一定的TPS要求, 目前基于EOSIO的链从底层技术的角度看是可以满足的, 但是如果仅仅是基于EOS公链的,那可拓展性就要大大降低, 前一段时间EOS公链的拥堵也印证了这一点, 性能问题上,一个比较简单的思路就是启动多条链, 这意味着我们需要为这个卡牌游戏单独启动一条或者多条链.
+### Codex.IO's Design
 
-另外一个游戏肯定需要其特殊的逻辑规则, 基于智能合约我们可以很好的实现这一点, 但是我们也得注意到目前的智能合约所提供的功能还是很有限, 举个简单的例子, 作为游戏的常见功能之一, 用户排行榜, 基于目前的合约就很难实现, 排行榜的困难在于, 一个排行榜更新频繁,榜的规模很大, 往往是基于全体用户的, 哪怕是传统的中心化服务器, 如果在这一方面考虑不周, 也会造成整个游戏无法顺利运营, 如果是基于EOSIO来做, 肯定要从底层角度实现一个新的数据结构, 甚至对于节点, 需要每个节点启动单独的排行节点来分散计算压力, 这就意味着开发者需要像开发传统服务器一样拓展EOSIO的功能.
+From the point of view of a so-called traditional software architecture, the intuitive attitude often regards the block chain as a database. For example, EOSIO is very similar to PostgreSQL in many aspects from the point of view of the interface used. Of course, the block chain technology provides new features over the traditional database technology and solves the problems that have not been solved before.
 
-综合上面的思考, 我们总结一下, 如果我们要在当下基于区块链技术去做一些应用, 那么我们需要的是往往是启动一条或者多条底层做了很多修改的链, 在其之上基于智能合约, 我们可以完成常见的逻辑.
+If we want to realize a card game based on block chain technology, in order to realize a card game, first of all, the structure must meet a relatively high performance index, which can be expanded horizontally, that is, to meet certain TPS requirements, At present, the chain based on EOSIO can be satisfied from the point of view of the underlying technology, but if it is only based on EOS public chain, the scalability will be greatly reduced. The congestion of EOS public chain in the past period also confirms this point. On the performance issue, a relatively simple idea is to start multiple chains, which means that we need to start a single or multiple chains for this card game.
 
-这样看来,似乎区块链落地也没什么阻碍,但是如果从开发者的角度看目前的区块链技术,实际上很难实现上面的过程,因为对一个应用的开发者来说,不可能花费大量时间和精力从链的底层开始开发, EOSIO在设计时底层也没有考虑到适应大量修改底层的情况,毕竟作为一个公链技术,与其说是不是可以适应底层修改,不如说在链启动之后根本没法大量修改,这就是为什么很多人希望增加一些小功能, 但是EOS公链一直没有实现的原因, 哪怕是最简单的一个函数,往往意味着整条链需要硬分叉.
+On the other hand game definitely needs its special logic rules. We can achieve this well based on smart contracts, but we also have to note that the functions provided by current smart contracts are still very limited. For example, as one of the common functions of games, user ranking is difficult to achieve based on current contracts. The difficulty of ranking is that ranking needs frequent updates, the scale of the list is very large, often based on all users, if this aspect is not considered carefully, it will cause the whole game can not run smoothly even for the traditional centralized server. If it is based on EOSIO, it is necessary to implement a new data structure from the bottom perspective. Even for nodes, it is necessary for each node to start a separate ranking node to decentralize the calculation pressure, which means that developers need to expand EOSIO functionality like traditional servers.
 
-在总结EOSForce的实践和ELMG EOS近一年的运行过程中所积累的经验之后, 原力团队认为目前需要一个高可定制化的基于EOSIO技术的公链框架, “高可定制化“使得开发者可以简单的添加其所需要的功能, “基于EOSIO技术”可以保证高TPS,同时也可以持续跟进区块链领域的最新进步, “框架”而非“库”所强调的是我们所想要构建的是一个开箱即用的产品,用户不需要详细的了解底层的细节.
+In summary, if we want to do some applications based on block chain technology at present, what we need is to start one or more chains with a lot of modifications at the bottom, on which we can complete common logic based on smart contracts.
 
-### Codex.IO资源模型
+In this way, it seems that there is no hindrance to block chain landing, but if we look at the current block chain technology from the developer's point of view, it is actually difficult to achieve the above process, because for an application developer, it is impossible to spend a lot of time and energy to start development from the bottom of the chain, and EOSIO is not designed to adapt to the situation of a large number of changes in the bottom, after all, as an application developer. Public chain technology, rather than being able to adapt to the underlying modifications, can not be changed at all after the start of the chain. This is why many people want to add some small functions, but the EOS public chain has not been implemented, even the simplest function, often means that the whole chain needs to be hard-forked.
 
-为了公平合理高效的分配链的计算资源, 链上需要一套资源结算规则, 也就是所谓的资源模型.
+After summarizing the practice of EOSForce and the experience of ELMG EOS in the past year, the Force team believes that a highly customizable public chain framework based on EOSIO technology is needed. High customizability enables developers to simply add the functions they need. EOSIO technology can guarantee high TPS and keep up with the most recent progress in the area of block chain. "framework" rather than "library" emphasizes that what we want to build is an out-of-the-box product that users do not need to know the underlying details.
 
-在基于EOSIO的链中, 一般有三种资源: CPU、NET和RAM,
-这三种资源中, CPU具有强烈的时效特性, NET在具有时效特性的同时也会影响节点的固定存储空间, 与CPU和NET不同, RAM具有强烈的空间特性,
-一般情况下, 有三种获取资源的方式: 手续费、抵押和租赁, 为了适应不同的需求, Codex.IO支持多种资源模型.
+### Codex.IO Resource Model
 
-对于CODEX中继链, CPU和NET通过抵押核心Token的方式获得, RAM通过租赁的方式获得.
-CODEX中继链是一种专用的链, CPU和NET通过抵押的方式并不会像EOSIO那样产生问题, 而抵押的方式对于交易比较友好, 所以CODEX采用抵押的方式获取CPU和NET,
-对于RAM, 基于原力的实践而采用租赁的方式, 这样可以让RAM被更有效的使用,
-在CODEX中继链中, 和EOSForce一样, 用户使用投票的分红租赁内存, 这个方式对用户很友好, 不需要频繁的操作.
+In order to allocate computing resources fairly, reasonably and efficiently, a set of resource settlement rules, called resource model, is needed on the chain.
 
-CODEX中继链引入了用户低保系统, 这给了每个用户一部分基础可使用的资源, 使得大多数用户不需通过额外的操作获取资源,
-考虑到一个生态中, 用户的增加通常会使得生态更加健全, 所以低保并不会对系统产生很大影响.
+In EOSIO-based chains, there are generally three kinds of resources: CPU、NET and RAM,
+Among these three resources, CPU has strong timeliness, while NET has timeliness, it also affects the fixed storage space of nodes. Unlike CPU and NET, RAM has strong spatial characteristics,
+Generally, there are three ways to obtain resources: handling fee, mortgage and lease. In order to meet different needs, Codex.IO supports a variety of resource models.
 
-### Codex跨链的设计
+For CODEX relay chain, CPU and NET are acquired by mortgage core Token, RAM is acquired by lease.
+CODEX relay chain is a kind of special chain. CPU and NET do not have problems like EOSIO through mortgage, but mortgage is more friendly to transaction. So CODEX uses mortgage to obtain CPU and NET.
+For RAM, leasing is based on Force practice, which can make RAM more effective.
 
-跨链是多链生态中一项最基本的需求, 跨链的本质是一条链去确认另一条链的区块,
-在一条链中, 区块是基于共识算法来进行确认的, 例如Codex.IO, 一个区块被超过三分之二的BP确认两轮就会成为不可逆块, 也就是被网络确认,
-由此而来一个最自然的思路就是使用源链一致的过程去确认其区块, 假设有两条基于Codex.IO启动的链, 分别是链A与链B, 链A希望确认链B的区块,
-那么, 只需链A上的超级节点去确认每个链B上超级节点对块的签名即可, 基于链B的不可逆机制, 链A很容易确认链B的区块,
-反之, 链B也可以基于相同的过程确认链A的区块.
+In CODEX relay chain, like EOSForce, users use voting dividends to lease memory, which is user-friendly and does not require frequent operations.
 
-通过上面所述的方法, 链A与链B间实现了跨链通信与状态同步.
-一个期望不降低系统去中心化程度的跨链逻辑必然类似于上面的过程,
-任何一个链的共识算法都很大程度上定义了这条链, 绕过其共识算法而进行的区块确认很难确保确认过程没有潜在的问题.
+CODEX Relay Chain introduces user low-guarantee system, which gives each user a part of the basic available resources, so that most users do not need additional operations to obtain resources.,
+Considering that in an ecosystem, the increase of users usually makes the ecosystem more sound, so the low-guarantee standard will not have a great impact on the system.
 
-但是这种过程也有不可忽视的问题,
+### Codex Cross-Chain Design
 
-首先, 一条链要同步完成源链的共识算法往往需要这条链的所有可生产区块的节点同时运行源链的全节点, 如上面的例子, 链A要确认超级节点的签名, 实际上需要基于链B的全节点所提供的信息才能真正的确认, 对于TPS不高的链来说, 维护一个链的全节点消耗不大, 但对于追求TPS的链, 维护一个全节点的要求则会很高, 这样的成本下, 很难建立与其对应的跨链经济体系.
+Cross-chain is a basic requirement in multi-chain ecosystem. The essence of cross-chain is to identify the blocks of another chain by one chain.
+In a chain, blocks are validated based on consensus algorithms, such as Codex. IO, where a block is validated by more than two-thirds of BP for two rounds and becomes irreversible, that is, by network validation,
+The most natural way of thinking is to use the process of source chain consistency to identify blocks. Suppose there are two chains started by Codex.IO, chain A and chain B, respectively. Chain A wants to identify blocks of chain B,
+Then, only the super nodes on chain A need to confirm the signature of the super nodes on each chain B. Based on the irreversible mechanism of chain B, chain A can easily confirm the block of chain B,
+Conversely, chain B can also confirm blocks of chain A based on the same process.
 
-其次, 按照上面的方式意味着试图同步其他链状态的链要更改自身的逻辑以确认其他链的区块, 也就是说这种方式是侵入式的,
-如果要在各种已有的链之间完成跨链, 就意味着各个链都要修改自身的代码.
+Through the method mentioned above, the cross-chain communication and state synchronization between chain A and chain B are realized.
+A cross-chain logic that expects no reduction in the degree of system decentralization is necessarily similar to the process described above,
+The consensus algorithm of any chain defines this chain to a great extent. Block validation bypassing its consensus algorithm is difficult to ensure that there are no potential problems in the validation process.
 
-最后, 即使链可以做出一定的修改, 或者说在链的开发阶段即加入了对跨链的支持, 但是, 在多链体系中, 一条链往往需要同步多个链的状态, 如果对每个链都进行适配,
-那么这条链需要承载的机制就是变得异常臃肿.
+But there are also some problems that can not be ignored in this process,
 
-上面所述的问题意味着如果要建立一个尽可能开放自由的的多链互通体系, 其跨链机制必须做满足以下原则,
+First of all, the consensus algorithm for a chain to complete the source chain synchronously often requires all the nodes that produce blocks to run the full node of the source chain simultaneously,  For example, in order to confirm the signature of the super node, chain A actually needs the information provided by the whole node of chain B to confirm it, For a chain with low TPS, maintaining the whole node of the chain costs little, but for a chain with high TPS, the requirement of maintaining a full node will be very high. Under such a cost, it is difficult to establish a corresponding cross-chain economic system.
 
-- **原则1** 跨链实现机制需要保持高效廉价
-- **原则2** 跨链适配需求需要满足非侵入性
-- **原则3** 跨链拓扑结构需要保证低耦合度
+Second, following the above approach means that chains trying to synchronize the states of other chains need to change their logic to identify blocks of other chains, which means that this approach is intrusive,
+If you want to cross chains between existing chains, it means that each chain has to modify its own code.
 
-针对由于链的数量而引发的跨链复杂性爆炸的问题, 一个很好的方式是通过一个专用与链状态同步的链作为各个链之间的中继, 如Cosmos的Hub Zone.
+Finally, even though chains can be modified to some extent, or cross-chain support is added to the chain development stage, in a multi-chain system, a chain often needs to synchronize the states of multiple chains, if each chain is adapted.
+So the mechanism that this chain needs to carry is to become abnormally overstaffed.
 
-另外两个方面问题是跨链机制对于链造成的侵入式修改和性能影响,
-不同的技术架构的链往往其应用场景并不相同, 这决定了不同技术架构的链对设计和性能要求也不尽相同,
+The problems mentioned above mean that if we want to build a multi-chain interworking system as open and free as possible, its cross-chain mechanism must satisfy the following principles,
 
-跨链机制大部分源于链的共识机制, 而不同的共识机制决定了不同链的社区体系.
-对于BTC, 社区很难接受一个基于固定个数节点的半中心化跨链机制, 而往往不会在乎一个去中心化程度高但性能缓慢的跨链方案.
-而对于基于基于fabric的联盟链, 往往会选择由源链运维的一个中心化节点提供的高性能跨链服务.
+- **principle 1** Cross-Chain Implementation Mechanisms Need to Maintain Efficiency and Cheapness
+- **principle 2** Cross-chain adaptation needs to be non-intrusive
+- **principle 3** Cross-chain topology requires low coupling
 
-不同的链对与性能问题的考量也不尽一致, 对于BTC, 每秒数十笔的转账交易的跨链TPS已经可以满足绝大多数应用场景下的需求, 但是对于基于Codex.IO发起的链, 很可能需要每秒数千次的复杂状态的同步.
+A good way to deal with the explosion of cross-chain complexity caused by the number of chains is to use a dedicated chain synchronized with the chain state as a relay between chains, such as Cosmos's Hub Zone.
 
-综上, 一个多链生态中的跨链机制需要兼顾**一致性**且**通用性**, 这也是CODEX中继链的设计方向.
+Two other issues are the intrusive modification and performance impact of cross-chain mechanisms on chains,
 
-CODEX中继链为链之间提供中继服务, 在CODEX多链体系中, 链和链之间并不互相交互, 而是通过CODEX中继链进行跨链, 跨链的过程中我们为了隐藏链之间的差异性添加了一个`中继层`, 跨链的机制由中继层来完成, 为了适应链之间不同的生态体系和性能要求, 在中继层中只定义了中继节点及其角色, 在中继层中, 有三类节点: Committer、Watcher和Checker.
+Chains of different technology architectures often have different application scenarios, which determines that chains of different technology architectures have different design and performance requirements,
 
-Committer负责从源链到中继链的状态同步, Watcher负责从中继链到源链的状态同步, Checker负责监控Committer和Watcher整体上是否诚实可信. 这三类角色没有明确的指定, 根据链的不同和实际情况, 将会选择最合适可行的节点,
+Most of the cross-chain mechanisms originate from the consensus mechanism of the chain, and different consensus mechanisms determine the community system of different chains.
+For BTC, it is difficult for the community to accept a semi-centralized cross-chain mechanism based on a fixed number of nodes, and often does not care about a high degree of decentralization but slow performance cross-chain scheme.
+For fabrics-based alliance chains, high-performance cross-chain services provided by a centralized node of source chain operation and maintenance are often chosen.
 
-比如说, 对于一个基于Codex.IO开发的DAPP应用链, Committer和Watcher可以由这条链的超级节点担任, 此时是不需要Checker的, 因为在DPOS共识中超级节点整体上被假设为是诚实的, 这样一个跨链过程不会对这条应用链及其相关的应用带来任何中心化程度上的影响.
+Performance considerations for different chains are also inconsistent. For BTC, the cross-chain TPS of tens of transfer transactions per second can meet the needs of most application scenarios, but for a chain initiated by Codex.IO, it is likely to require thousands of times of synchronization of complex states per second.
 
-再如, 对于ELMG EOS或者其他一些主要的基于EOSIO的公链, 如果超级节点无法参与跨链, 那么Committer可以由部分ELMG EOS社区的节点共同维护, 而Watcher可以由CODEX中继链超级节点兼任, 相应的Checker可以由Committer和Watcher共同组成. 这里对于CODEX中继链上的行为, CODEX中继链超级节点在整体上是诚实的, 所以Watcher由CODEX中继链超级节点不会降低中继的可信程度, 另一方面Checker的监督可以防止Committer作恶, 在这个体系下, 这样一个跨链过程也是可以行之有效的.
+To sum up, the cross-chain mechanism in a multi-chain ecosystem needs to take into account the consistency and versatility, which is also the design direction of CODEX relay chain.
 
-再如一个基于fabric的联盟链或者基于Codex.IO的私链, 上面介绍过完全可以由一个高可用的中心化节点兼任Committer和Watcher, 也可以引入一些第三方节点作为Checker进行监督.
+CODEX relay chain provides relay services between chains. In CODEX multi-chain system, chains do not interact with each other, but cross-chain through CODEX relay chain. In the process of cross-chain, we add a `relay layer'to hide the differences between chains. The mechanism of cross-chain is completed by relay layer. In order to adapt to different ecological systems and performance requirements between chains, relay layer only defines relay nodes and their roles. In the relay layer, there are three types of nodes: Committer, Watcher and Checker.
 
-最后, 对于BTC、ETH这样的POW链, 情况会复杂一些, 对于Committer, 可以基于//特定的哈希锁定技术—这里不要说哈希锁定，就是轻节点中继//来向中继链传递信息, 而Watcher可以由CODEX中继链超级节点兼任, Checker可以由一部分“钓鱼者”节点组成, 保证整个系统的可靠性. 当然这也需要建立一套经济模型与之匹配.
+Committer is responsible for state synchronization from source chain to relay chain, Watcher is responsible for state synchronization from relay chain to source chain, Checker is responsible for monitoring whether Committer and Watcher are honest and credible as a whole. These three types of roles are not clearly specified. According to the different chains and the actual situation, the most suitable and feasible nodes will be selected,
 
-另外, 这样通用的设计也允许CODEX中继链兼容其他跨链技术, 如Cosmos、polkadot等.
+For example, for a DAPP application chain based on Codex.IO, Committer and Watcher can be served by a super-node in this chain. Checker is not needed at this time, because in the DPOS consensus, super-nodes are assumed to be honest as a whole. Such a cross-chain process will not have any impact on the centralization of this application chain and its related applications.
 
-## 5. 应用场景
+Again, for ELMG EOS or some other major EOSIO-based public chains, if super-nodes can not participate in cross-chain, then Committer can be maintained by some ELMG EOS community nodes, while Watcher can be served by CODEX relay chain super-nodes concurrently, and the corresponding Checker can be composed of Committer and Watcher. Here for the behavior of CODEX relay chain, CODEX relay chain super Nodes are honest on the whole, so Watcher by CODEX relay chain super-node will not reduce the credibility of relay, on the other hand, Checker's supervision can prevent Committer from doing evil, in this system, such a cross-chain process can also be effective.
 
-### 多链实践
+Another example is a fabric-based alliance chain or a private chain based on Codex.IO. It has been shown that a highly available centralized node can serve as Committer and Watcher, and some third-party nodes can be introduced as Checkers for monitoring.
 
-在多链生态之上，通过资源的自由供给和交易，可以使很多之前很难在链上运行的应用进入链上运营，这样这些应用既可以获取用户的共识，也可以通过选择特定的资源，保证TPS的同时控制运营成本.
+Finally, for POW chains such as BTC and ETH, the situation will be more complex. For Committer, it can be based on // specific hash locking technology - let alone hash locking, which means that light node relay // forward transfers information to the relay chain. Watcher can be served by super-nodes of CODEX relay chain, and Checker can be composed of a part of "fisher" nodes to ensure the reliability of the whole system. However, it also needs to establish a set of economic models to match it.
 
-#### 链上网络游戏平台
+In addition, this general design allows CODEX relay chain to be compatible with other cross-chain technologies, such as Cosmos, polkadot, etc.
 
-让我们考虑一个链上网络游戏平台，传统互联网的游戏运营模式包括游戏玩家，游戏开发者(CP)，游戏运营商和游戏渠道商.
+## 5. Application scenarios
 
-现阶段这些主体间充满矛盾：
+### Multi-chain Practice
 
-- 游戏玩家不信任游戏开发者，表现之一就是对奖励概率的质疑，为此官方要求开发者公开各种抽奖概率，但是对于玩家根本无法验证.
-- 游戏玩家不信任游戏玩家，玩家间无法进行可靠的交易，游戏中作弊外挂屡见不鲜.
-- 游戏开发者不信任运营商和渠道商，游戏收入分成、排名中游戏开发者处于弱势，使得游戏开发者没有动力开发更好的游戏.
+On the multi-chain ecosystem, through the free supply and trade of resources, many applications that were previously difficult to operate on the chain can be put into the chain operation, so that these applications can not only obtain the consensus of users, but also control the operation cost by selecting specific resources while ensuring TPS.
 
-等等， 最终的结果是全输，实际上通过区块链技术可以很好的解决这些矛盾，形成共识机制，
-但是，游戏运营对于TPS和资源的要求很高，同时很多游戏玩法逻辑并不适合也并没有必要在区块链上运行，
-之前的很多区块链游戏都面临阻塞整个网络和运营成本过高的问题.
+#### On-chain online game platform
 
-这些问题通过多链生态很好解决，如图：
+Let's consider a on-chain online game platform. Traditional Internet game operation modes include game players, game developers (CP), game operators and game channel providers.
+
+At present, these subjects are full of contradictions：
+
+- Players do not trust game developers, one of the manifestations is the questioning of reward probability. For this reason, the government requires developers to disclose all kinds of lottery probability, but it is impossible for players to verify it.
+- Game players do not trust game players, players can not carry out reliable transactions, cheating plug-ins are common in the game.
+- Game developers distrust operators and channel providers. Game developers are at a disadvantage in revenue sharing and ranking, which makes game developers have no motivation to develop better games.
+
+etc， The final result is total transmission. In fact, these contradictions can be well solved through block chain technology and consensus mechanism can be formed，
+However, game operation requires high TPS and resources, and many game play logic is not suitable and unnecessary to run on the block chain，
+Previous block-chain games faced the problem of blocking the entire network and operating costs too high.
+
+These problems can be solved well through multi-chain ecology, as shown in the figure：
 
 ![side](../assert/multi_chain_pic5.png)
 
-考虑一个典型的RPG手游，其大量的逻辑依然通过传统游戏服务器客户端架构提供给玩家，
-而关键的逻辑，如产出，排行榜和玩家资产，由平台在链上处理，玩家可以验证其是否诚实，
-平台提供SDK帮助游戏开发者接入链，这样也会减少开发者成本，进一步，可以激励开发者移植现有游戏到链上，
+Consider a typical RPG mobile game, where a lot of logic is still available to players through the traditional game server client architecture.，
+The key logic, such as output, rankings and player assets, is handled by the platform on the chain, and players can verify their honesty，
+Platform provides SDK to help game developers access the chain, which will also reduce the cost of developers, and further encourage developers to migrate existing games to the chain，
 
-平台使用专用的应用链来允许特定的游戏，这样可以保证游戏上线时TPS需求，另外一方面可以减少运营成本.
+Platform uses dedicated application chains to allow specific games, which ensures TPS requirements when the game is online, and on the other hand, reduces operating costs.
 
-未来预计会产生专门的应用链云服务商，通过几个服务商联盟可以高效灵活的为平台提供链资源，同时保证链的诚实.
+It is expected that there will be a special application chain cloud service providers in the future. Through several service providers alliances, the platform can provide chain resources efficiently and flexibly, while ensuring the integrity of the chain.
 
-另外一方面，玩家可以使用平台发布coin兑换游戏中的coin在游戏中消费，也可以通过中继层上的交易所实现玩家间自由资产交易.
+On the other hand, players can exchange platform coin for the game coin to consume in the game, and they can also realize free assets exchange between players through the exchange on the relay layer.
 
-## 6. 路线图
+## 6. Roadmap
 
-- **但丁**   2019 Q2 Codex 1.0, 启动Codex.Relay, 支持EOSIO同构链状态通道
-- **达芬奇** 2020 Q1 Codex 2.0, Codex.Relay切换至PoS共识机制, 状态通道支持异构链, 实现任意链自由加入多链生态
-- **布鲁诺** 2020 Q4 Codex 3.0, Codex.IO实现可拔插的共识机制, 支持多种虚拟机系统, 大幅提高Codex.Relay性能
-- **伽利略** 2021 Q3 Codex 4.0, 多链生态加入IPFS存储、链间消息队列等基础服务
+- **Dante**   2019 Q2 Codex 1.0, Lanch Codex.Relay, supporting EOSIO isomorphic chain state Channel
+- **Vinci**   2020 Q1 Codex 2.0, Codex.Relay switches to the PoS consensus mechanism, the state channel supports heterogeneous chains and realizes the free addition of arbitrary chains to the multi-chain ecosystem.
+- **Bruno**   2020 Q4 Codex 3.0, Codex.IO implements pluggable consensus mechanism, support multiple virtual machine systems, greatly improve the performance of Codex.Relay
+- **Galileo** 2021 Q3 Codex 4.0, Multi-chain ecology joins basic services such as IPFS storage, inter-chain message queue, etc.
