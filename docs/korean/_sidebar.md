@@ -1,1 +1,1 @@
-- [首页](README.md)
+- [CODEX 이코노믹 모델 초안 Beta 1.0](korean/codex-e-han.md)
