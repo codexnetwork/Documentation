@@ -15,6 +15,8 @@
 - Trunk
   - [Trunk介绍](zh-cn/trunk/intro-trunk.md)
   - [Trunk Node配置说明](zh-cn/trunk/config-trunk.md)
+- 起链
+  - [基于codex.io起链说明](zh-cn/study/codex.io区块链开发.md)
 - 关于文档的文档
   - [文档搭建介绍](example/doc_introduction.md)
   - [Markdown语法示例](example/example.md)

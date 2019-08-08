@@ -15,6 +15,8 @@
 - Trunk
   - [Trunk introduction](en-us/trunk/intro-trunk.md)
   - [Trunk Node Configuration](en-us/trunk/config-trunk.md)
+- Start a blockchain
+  - [Start a blockchain based on codex.io](en-us/study/blockchain_development_Based_on_codex.io.md)
 - Documentation about the documentation
   - [Document Building Introduction](example/doc_introduction.md)
   - [Markdown syntax example](example/example.md)
